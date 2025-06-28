@@ -1,24 +1,24 @@
 {
-“name”: “nba-player-projections”,
-“version”: “1.0.0”,
-“description”: “NBA Player Projected Points Calculator using real-time data”,
-“main”: “index.js”,
-“scripts”: {
-“dev”: “vercel dev”,
-“build”: “echo ‘Build complete’”,
-“start”: “vercel dev”
-},
-“keywords”: [
-“nba”,
-“basketball”,
-“projections”,
-“fantasy”,
-“statistics”
-],
-“author”: “Your Name”,
-“license”: “MIT”,
-“dependencies”: {},
-“devDependencies”: {
-“@vercel/node”: “^3.0.0”
-}
+  "name": "nba-player-projections",
+  "version": "1.0.0",
+  "description": "NBA Player Projected Points Calculator",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Build complete'",
+    "start": "vercel dev"
+  },
+  "keywords": [
+    "nba",
+    "basketball",
+    "projections",
+    "fantasy",
+    "statistics"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@vercel/node": "^3.0.0"
+  }
 }
