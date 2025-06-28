@@ -119,11 +119,11 @@ team.team.toLowerCase() === teamAbbr.toLowerCase()
   rank_defense: null
   };
 
-if (!dvpData?.nba_defense_vs_position_2024_25?.teams) {
+if (!dvpData?.nba_dvp_2024_25?.teams) {
 return defaultDVP;
 }
 
-const team = dvpData.nba_defense_vs_position_2024_25.teams.find(team =>
+const team = dvpData.nba_dvp_2024_25.teams.find(team =>
 team.team.toLowerCase() === teamAbbr.toLowerCase()
 );
 
@@ -220,7 +220,7 @@ errors.push(‘Team pace data is missing or empty’);
 }
 
 // Check DVP data
-if (!dvpData?.nba_defense_vs_position_2024_25?.teams?.length) {
+if (!dvpData?.nba_dvp_2024_25?.teams?.length) {
 errors.push(‘Defense vs Position data is missing or empty’);
 }
 
@@ -230,7 +230,7 @@ errors,
 stats: {
 playerCount: playerStats?.nba_player_stats_2024_25?.players?.length || 0,
 teamCount: teamPace?.nba_team_pace_2024_25?.teams?.length || 0,
-dvpTeamCount: dvpData?.nba_defense_vs_position_2024_25?.teams?.length || 0
+dvpTeamCount: dvpData?.nba_dvp_2024_25?.teams?.length || 0
 }
 };
 }
