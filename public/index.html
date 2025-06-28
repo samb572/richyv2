@@ -12,11 +12,12 @@
             color: #e0e0e0; /* Light text color for contrast */
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align content to the top */
+            align-items: center; /* CHANGE: Align items to center vertically */
             min-height: 100vh;
             margin: 0;
-            padding: 30px 20px; /* More padding top/bottom */
+            padding: 20px; /* Adjusted padding for better fit on all screens, especially mobile */
             box-sizing: border-box;
+            overflow-y: auto; /* Allow scrolling if content overflows */
         }
 
         /* Container for the entire calculator */
@@ -28,10 +29,12 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow */
             width: 100%;
             max-width: 650px; /* Slightly wider for the calculator layout */
-            position: relative;
+            /* REMOVE: position: relative; if not specifically needed for internal elements */
             display: flex;
             flex-direction: column;
             gap: 25px; /* Space between sections */
+            flex-grow: 1; /* Allow container to grow within flex body */
+            margin: auto; /* Center container if it doesn't take full width */
         }
 
         header {
@@ -336,15 +339,7 @@
 
         /* Footer */
         footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #808080;
-            font-size: 0.85em;
-            padding-top: 20px;
-            border-top: 1px solid #323d5a; /* A subtle separator */
-        }
-        footer p {
-            margin: 5px 0;
+            display: none; /* REMOVE THE FOOTER */
         }
 
         /* Autocomplete Specific Styles */
@@ -389,6 +384,9 @@
 
         /* --- Mobile Responsiveness (Media Queries) --- */
         @media (max-width: 768px) {
+            body {
+                padding: 15px; /* Adjust padding for mobile devices */
+            }
             h1 {
                 font-size: 2em; /* Smaller heading on smaller screens */
             }
@@ -579,11 +577,6 @@
             <p id="errorMessage"></p>
         </div>
     </div>
-
-    <footer>
-        <p>Data from 2024-25 NBA Season | Updated: June 28, 2025</p>
-        <p>Formula accounts for pace, usage, defense vs position, and player efficiency</p>
-    </footer>
 
     <script>
         const API_BASE_URL = window.location.origin;
