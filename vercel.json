@@ -1,7 +1,7 @@
 {
-“functions”: {
-“api/calculate-projection.js”: {
-“maxDuration”: 10
-}
-}
+  "functions": {
+    "api/calculate-projection.js": {
+      "maxDuration": 10
+    }
+  }
 }
