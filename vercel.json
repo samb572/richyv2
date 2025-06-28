@@ -1,21 +1,4 @@
 {
-“version”: 2,
-“builds”: [
-{
-“src”: “api/*.js”,
-“use”: “@vercel/node”
-}
-],
-“routes”: [
-{
-“src”: “/api/(.*)”,
-“dest”: “/api/$1”
-},
-{
-“src”: “/(.*)”,
-“dest”: “/public/$1”
-}
-],
 “functions”: {
 “api/calculate-projection.js”: {
 “maxDuration”: 10
