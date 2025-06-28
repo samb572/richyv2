@@ -1,0 +1,280 @@
+{
+“nba_team_pace_2024_25”: {
+“last_updated”: “2025-06-28”,
+“season”: “2024-25”,
+“source”: “NBA.com and StatMuse”,
+“league_average_pace”: 100.8,
+“teams”: [
+{
+“team”: “MEM”,
+“team_name”: “Memphis Grizzlies”,
+“pace”: 103.26,
+“rank”: 1,
+“offensive_rating”: 117.7,
+“defensive_rating”: 113.0,
+“net_rating”: 4.7
+},
+{
+“team”: “SAC”,
+“team_name”: “Sacramento Kings”,
+“pace”: 102.8,
+“rank”: 2,
+“offensive_rating”: 116.2,
+“defensive_rating”: 115.1,
+“net_rating”: 1.1
+},
+{
+“team”: “CHI”,
+“team_name”: “Chicago Bulls”,
+“pace”: 102.5,
+“rank”: 3,
+“offensive_rating”: 111.2,
+“defensive_rating”: 114.8,
+“net_rating”: -3.6
+},
+{
+“team”: “WAS”,
+“team_name”: “Washington Wizards”,
+“pace”: 102.2,
+“rank”: 4,
+“offensive_rating”: 107.2,
+“defensive_rating”: 119.1,
+“net_rating”: -11.9
+},
+{
+“team”: “HOU”,
+“team_name”: “Houston Rockets”,
+“pace”: 101.9,
+“rank”: 5,
+“offensive_rating”: 115.8,
+“defensive_rating”: 108.2,
+“net_rating”: 7.6
+},
+{
+“team”: “LAL”,
+“team_name”: “Los Angeles Lakers”,
+“pace”: 101.8,
+“rank”: 6,
+“offensive_rating”: 115.9,
+“defensive_rating”: 114.7,
+“net_rating”: 1.2
+},
+{
+“team”: “ATL”,
+“team_name”: “Atlanta Hawks”,
+“pace”: 101.7,
+“rank”: 7,
+“offensive_rating”: 118.2,
+“defensive_rating”: 119.4,
+“net_rating”: -1.2
+},
+{
+“team”: “UTA”,
+“team_name”: “Utah Jazz”,
+“pace”: 101.6,
+“rank”: 8,
+“offensive_rating”: 109.7,
+“defensive_rating”: 124.1,
+“net_rating”: -14.4
+},
+{
+“team”: “PHO”,
+“team_name”: “Phoenix Suns”,
+“pace”: 101.4,
+“rank”: 9,
+“offensive_rating”: 118.3,
+“defensive_rating”: 114.2,
+“net_rating”: 4.1
+},
+{
+“team”: “TOR”,
+“team_name”: “Toronto Raptors”,
+“pace”: 101.3,
+“rank”: 10,
+“offensive_rating”: 110.7,
+“defensive_rating”: 117.8,
+“net_rating”: -7.1
+},
+{
+“team”: “POR”,
+“team_name”: “Portland Trail Blazers”,
+“pace”: 101.2,
+“rank”: 11,
+“offensive_rating”: 109.3,
+“defensive_rating”: 118.5,
+“net_rating”: -9.2
+},
+{
+“team”: “MIN”,
+“team_name”: “Minnesota Timberwolves”,
+“pace”: 101.0,
+“rank”: 12,
+“offensive_rating”: 113.6,
+“defensive_rating”: 108.1,
+“net_rating”: 5.5
+},
+{
+“team”: “PHI”,
+“team_name”: “Philadelphia 76ers”,
+“pace”: 100.9,
+“rank”: 13,
+“offensive_rating”: 113.5,
+“defensive_rating”: 115.9,
+“net_rating”: -2.4
+},
+{
+“team”: “CLE”,
+“team_name”: “Cleveland Cavaliers”,
+“pace”: 100.8,
+“rank”: 14,
+“offensive_rating”: 122.1,
+“defensive_rating”: 109.8,
+“net_rating”: 12.3
+},
+{
+“team”: “DEN”,
+“team_name”: “Denver Nuggets”,
+“pace”: 100.7,
+“rank”: 15,
+“offensive_rating”: 120.1,
+“defensive_rating”: 114.8,
+“net_rating”: 5.3
+},
+{
+“team”: “GSW”,
+“team_name”: “Golden State Warriors”,
+“pace”: 100.6,
+“rank”: 16,
+“offensive_rating”: 112.8,
+“defensive_rating”: 112.5,
+“net_rating”: 0.3
+},
+{
+“team”: “LAC”,
+“team_name”: “Los Angeles Clippers”,
+“pace”: 100.5,
+“rank”: 17,
+“offensive_rating”: 114.2,
+“defensive_rating”: 109.3,
+“net_rating”: 4.9
+},
+{
+“team”: “DET”,
+“team_name”: “Detroit Pistons”,
+“pace”: 100.4,
+“rank”: 18,
+“offensive_rating”: 110.1,
+“defensive_rating”: 115.8,
+“net_rating”: -5.7
+},
+{
+“team”: “BOS”,
+“team_name”: “Boston Celtics”,
+“pace”: 100.3,
+“rank”: 19,
+“offensive_rating”: 122.2,
+“defensive_rating”: 107.3,
+“net_rating”: 14.9
+},
+{
+“team”: “CHO”,
+“team_name”: “Charlotte Hornets”,
+“pace”: 100.2,
+“rank”: 20,
+“offensive_rating”: 109.5,
+“defensive_rating”: 117.4,
+“net_rating”: -7.9
+},
+{
+“team”: “SAS”,
+“team_name”: “San Antonio Spurs”,
+“pace”: 100.1,
+“rank”: 21,
+“offensive_rating”: 113.5,
+“defensive_rating”: 117.1,
+“net_rating”: -3.6
+},
+{
+“team”: “MIA”,
+“team_name”: “Miami Heat”,
+“pace”: 100.0,
+“rank”: 22,
+“offensive_rating”: 112.6,
+“defensive_rating”: 111.9,
+“net_rating”: 0.7
+},
+{
+“team”: “DAL”,
+“team_name”: “Dallas Mavericks”,
+“pace”: 99.9,
+“rank”: 23,
+“offensive_rating”: 117.1,
+“defensive_rating”: 115.8,
+“net_rating”: 1.3
+},
+{
+“team”: “ORL”,
+“team_name”: “Orlando Magic”,
+“pace”: 99.8,
+“rank”: 24,
+“offensive_rating”: 109.8,
+“defensive_rating”: 105.9,
+“net_rating”: 3.9
+},
+{
+“team”: “MIL”,
+“team_name”: “Milwaukee Bucks”,
+“pace”: 99.7,
+“rank”: 25,
+“offensive_rating”: 118.6,
+“defensive_rating”: 114.1,
+“net_rating”: 4.5
+},
+{
+“team”: “NYK”,
+“team_name”: “New York Knicks”,
+“pace”: 99.6,
+“rank”: 26,
+“offensive_rating”: 117.5,
+“defensive_rating”: 110.9,
+“net_rating”: 6.6
+},
+{
+“team”: “BRK”,
+“team_name”: “Brooklyn Nets”,
+“pace”: 99.5,
+“rank”: 27,
+“offensive_rating”: 112.4,
+“defensive_rating”: 115.2,
+“net_rating”: -2.8
+},
+{
+“team”: “IND”,
+“team_name”: “Indiana Pacers”,
+“pace”: 99.4,
+“rank”: 28,
+“offensive_rating”: 119.8,
+“defensive_rating”: 113.6,
+“net_rating”: 6.2
+},
+{
+“team”: “NOP”,
+“team_name”: “New Orleans Pelicans”,
+“pace”: 99.3,
+“rank”: 29,
+“offensive_rating”: 113.7,
+“defensive_rating”: 119.8,
+“net_rating”: -6.1
+},
+{
+“team”: “OKC”,
+“team_name”: “Oklahoma City Thunder”,
+“pace”: 99.2,
+“rank”: 30,
+“offensive_rating”: 120.1,
+“defensive_rating”: 107.5,
+“net_rating”: 12.6
+}
+]
+}
+}
