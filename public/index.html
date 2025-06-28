@@ -1,11 +1,382 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Player Projection Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #13182d; /* Dark background color */
+            color: #e0e0e0; /* Light text color for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align content to the top */
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px 20px; /* More padding top/bottom */
+            box-sizing: border-box;
+        }
+
+        /* Container for the entire calculator */
+        .container {
+            background-color: #1a2038; /* Slightly lighter dark for inner elements */
+            border: 2px solid #cfb779; /* Gold trim border */
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+            width: 100%;
+            max-width: 650px; /* Slightly wider for the calculator layout */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Space between sections */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 15px; /* Adjust margin for overall flow */
+        }
+
+        h1 {
+            color: #cfb779; /* Gold for the heading */
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+
+        /* Formula Display Section */
+        .formula-display {
+            background-color: #0d1122; /* Even darker for this section */
+            border: 1px solid #323d5a; /* Subtle border */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .formula-display h3 {
+            color: #cfb779;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .formula-content p {
+            font-family: 'Courier New', Courier, monospace; /* Monospaced font for formulas */
+            background-color: #080a13; /* Even darker background for formula lines */
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            color: #b0b0b0;
+            font-size: 0.95em;
+        }
+        
+        .formula-content p strong {
+            color: #cfb779;
+        }
+
+        .formula-display small {
+            display: block;
+            margin-top: 15px;
+            color: #808080;
+            font-style: italic;
+        }
+
+        /* Input Section Styling */
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between input groups */
+        }
+
+        .input-group {
+            position: relative; /* For autocomplete positioning */
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .input-group label {
+            color: #cfb779; /* Gold for labels */
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .input-group small {
+            color: #a0a0a0;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 24px); /* Account for padding */
+            padding: 12px;
+            border: 1px solid #323d5a;
+            border-radius: 8px;
+            background-color: #0d1122;
+            color: #e0e0e0;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            -webkit-appearance: none; /* Remove default styling for select on Safari/Chrome */
+            -moz-appearance: none; /* Remove default styling for select on Firefox */
+            appearance: none; /* Remove default styling for select */
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #cfb779;
+            box-shadow: 0 0 0 3px rgba(207, 183, 121, 0.3);
+        }
+
+        /* Custom arrow for select */
+        select {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23e0e0e0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 24px;
+            padding-right: 40px; /* Make space for the arrow */
+        }
+
+
+        .input-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .input-row .input-group {
+            flex: 1; /* Distribute space equally */
+        }
+
+        /* Calculate Button */
+        .calculate-btn {
+            background-color: #cfb779; /* Gold button */
+            color: #13182d; /* Dark text for button */
+            border: none;
+            border-radius: 8px;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .calculate-btn:hover {
+            background-color: #e6c888; /* Slightly lighter gold on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(207, 183, 121, 0.4);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .calculate-btn:disabled {
+            background-color: #8a7a50; /* Muted gold when disabled */
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(19, 24, 45, 0.3);
+            border-top: 3px solid #13182d;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Result Section */
+        .result-section {
+            background-color: #0d1122;
+            border: 1px solid #cfb779; /* Gold border for results */
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .result-header h3 {
+            color: #cfb779;
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .result-main {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .projected-points {
+            background-color: #21294a; /* Darker accent for points display */
+            border: 1px solid #cfb779;
+            border-radius: 10px;
+            padding: 20px 0;
+            display: inline-block; /* To center it */
+            min-width: 200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .points-label {
+            display: block;
+            font-size: 1.1em;
+            color: #a0a0a0;
+            margin-bottom: 5px;
+        }
+
+        .points-value {
+            font-size: 3em;
+            font-weight: bold;
+            color: #cfb779;
+            display: block;
+            line-height: 1;
+        }
+
+        .result-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns */
+            gap: 20px;
+        }
+
+        .result-details > div {
+            background-color: #1a2038; /* Same as main container background */
+            border: 1px solid #323d5a;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .result-details h4 {
+            color: #cfb779;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .result-details p, .result-details .breakdown-item {
+            font-size: 0.95em;
+            color: #b0b0b0;
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+        .result-details .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(207, 183, 121, 0.2);
+        }
+        .result-details .breakdown-item:last-child {
+            border-bottom: none;
+        }
+        .result-details .breakdown-item span:first-child {
+            font-weight: bold;
+        }
+
+        /* Error Section */
+        .error-section {
+            background-color: #4a1c1c; /* Dark red for error */
+            border: 1px solid #ff6347; /* Bright red border */
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .error-section h3 {
+            color: #ff6347;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .error-section p {
+            color: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #808080;
+            font-size: 0.85em;
+            padding-top: 20px;
+            border-top: 1px solid #323d5a; /* A subtle separator */
+        }
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Autocomplete Specific Styles (from previous example) */
+        .autocomplete-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        #autocompleteResults {
+            position: absolute;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #1a2038; /* Match container background */
+            border: 1px solid #323d5a;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            list-style: none;
+            padding: 0;
+            margin-top: -1px; /* Overlap border with input */
+            display: none;
+        }
+
+        #autocompleteResults.show {
+            display: block;
+        }
+
+        #autocompleteResults li {
+            padding: 12px 15px;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        #autocompleteResults li:hover,
+        #autocompleteResults li.selected {
+            background-color: #323d5a;
+            color: #cfb779;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -14,303 +385,424 @@
             <p class="subtitle">Calculate projected points using real 2024-25 NBA data</p>
         </header>
 
-```
-    <div class="formula-display">
-        <h3>📊 Projection Formula</h3>
-        <div class="formula-content">
-            <p><strong>PaceAdj</strong> = Opponent Pace ÷ League Average Pace</p>
-            <p><strong>FGA_proj</strong> = FGA_36 × (Minutes ÷ 36) × Usage% × DVP_FGA × PaceAdj</p>
-            <p><strong>FTA_proj</strong> = FTA_36 × (Minutes ÷ 36) × Usage% × DVP_FTA × PaceAdj</p>
-            <p><strong>Points</strong> = [2P attempts × 2P% × 2] + [3P attempts × 3P% × 3] + [FTA × FT%]</p>
-        </div>
-        <small>All player stats, team pace, and defense vs position data automatically loaded from 2024-25 season</small>
-    </div>
-
-    <div class="input-section">
-        <div class="input-group">
-            <label for="playerName">🏀 Player Name</label>
-            <input type="text" id="playerName" placeholder="e.g., LeBron James, Luka Doncic" value="Shai Gilgeous-Alexander">
-            <small>Start typing to search from top 100 players</small>
+        <div class="formula-display">
+            <h3>📊 Projection Formula</h3>
+            <div class="formula-content">
+                <p><strong>PaceAdj</strong> = Opponent Pace ÷ League Average Pace</p>
+                <p><strong>FGA_proj</strong> = FGA_36 × (Minutes ÷ 36) × Usage% × DVP_FGA × PaceAdj</p>
+                <p><strong>FTA_proj</strong> = FTA_36 × (Minutes ÷ 36) × Usage% × DVP_FTA × PaceAdj</p>
+                <p><strong>Points</strong> = [2P attempts × 2P% × 2] + [3P attempts × 3P% × 3] + [FTA × FT%]</p>
+            </div>
+            <small>All player stats, team pace, and defense vs position data automatically loaded from 2024-25 season</small>
         </div>
 
-        <div class="input-group">
-            <label for="opponentTeam">🛡️ Opponent Team</label>
-            <select id="opponentTeam">
-                <option value="">Select opponent team...</option>
-                <option value="ATL">Atlanta Hawks</option>
-                <option value="BOS">Boston Celtics</option>
-                <option value="BRK">Brooklyn Nets</option>
-                <option value="CHO">Charlotte Hornets</option>
-                <option value="CHI">Chicago Bulls</option>
-                <option value="CLE">Cleveland Cavaliers</option>
-                <option value="DAL">Dallas Mavericks</option>
-                <option value="DEN">Denver Nuggets</option>
-                <option value="DET">Detroit Pistons</option>
-                <option value="GSW">Golden State Warriors</option>
-                <option value="HOU">Houston Rockets</option>
-                <option value="IND">Indiana Pacers</option>
-                <option value="LAC">Los Angeles Clippers</option>
-                <option value="LAL">Los Angeles Lakers</option>
-                <option value="MEM">Memphis Grizzlies</option>
-                <option value="MIA">Miami Heat</option>
-                <option value="MIL">Milwaukee Bucks</option>
-                <option value="MIN">Minnesota Timberwolves</option>
-                <option value="NOP">New Orleans Pelicans</option>
-                <option value="NYK">New York Knicks</option>
-                <option value="OKC">Oklahoma City Thunder</option>
-                <option value="ORL">Orlando Magic</option>
-                <option value="PHI">Philadelphia 76ers</option>
-                <option value="PHO">Phoenix Suns</option>
-                <option value="POR">Portland Trail Blazers</option>
-                <option value="SAC">Sacramento Kings</option>
-                <option value="SAS">San Antonio Spurs</option>
-                <option value="TOR">Toronto Raptors</option>
-                <option value="UTA">Utah Jazz</option>
-                <option value="WAS">Washington Wizards</option>
-            </select>
-        </div>
-
-        <div class="input-row">
-            <div class="input-group">
-                <label for="projectedMinutes">⏱️ Projected Minutes</label>
-                <input type="number" id="projectedMinutes" min="1" max="48" step="0.1" value="32" placeholder="e.g., 32.5">
+        <div class="input-section">
+            <div class="input-group autocomplete-wrapper"> <label for="playerName">🏀 Player Name</label>
+                <input type="text" id="playerName" placeholder="e.g., LeBron James, Luka Doncic" value="Shai Gilgeous-Alexander">
+                <ul id="autocompleteResults"></ul> <small>Start typing to search from top 100 players</small>
             </div>
 
             <div class="input-group">
-                <label for="usageAdjustment">📈 Usage Adjustment</label>
-                <input type="number" id="usageAdjustment" min="0.1" max="3" step="0.01" value="1.00" placeholder="e.g., 1.15">
-                <small>1.0 = normal, 1.2 = 20% increase, 0.8 = 20% decrease</small>
+                <label for="opponentTeam">🛡️ Opponent Team</label>
+                <select id="opponentTeam">
+                    <option value="">Select opponent team...</option>
+                    <option value="ATL">Atlanta Hawks</option>
+                    <option value="BOS">Boston Celtics</option>
+                    <option value="BRK">Brooklyn Nets</option>
+                    <option value="CHO">Charlotte Hornets</option>
+                    <option value="CHI">Chicago Bulls</option>
+                    <option value="CLE">Cleveland Cavaliers</option>
+                    <option value="DAL">Dallas Mavericks</option>
+                    <option value="DEN">Denver Nuggets</option>
+                    <option value="DET">Detroit Pistons</option>
+                    <option value="GSW">Golden State Warriors</option>
+                    <option value="HOU">Houston Rockets</option>
+                    <option value="IND">Indiana Pacers</option>
+                    <option value="LAC">Los Angeles Clippers</option>
+                    <option value="LAL">Los Angeles Lakers</option>
+                    <option value="MEM">Memphis Grizzlies</option>
+                    <option value="MIA">Miami Heat</option>
+                    <option value="MIL">Milwaukee Bucks</option>
+                    <option value="MIN">Minnesota Timberwolves</option>
+                    <option value="NOP">New Orleans Pelicans</option>
+                    <option value="NYK">New York Knicks</option>
+                    <option value="OKC">Oklahoma City Thunder</option>
+                    <option value="ORL">Orlando Magic</option>
+                    <option value="PHI">Philadelphia 76ers</option>
+                    <option value="PHO">Phoenix Suns</option>
+                    <option value="POR">Portland Trail Blazers</option>
+                    <option value="SAC">Sacramento Kings</option>
+                    <option value="SAS">San Antonio Spurs</option>
+                    <option value="TOR">Toronto Raptors</option>
+                    <option value="UTA">Utah Jazz</option>
+                    <option value="WAS">Washington Wizards</option>
+                </select>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="projectedMinutes">⏱️ Projected Minutes</label>
+                    <input type="number" id="projectedMinutes" min="1" max="48" step="0.1" value="32" placeholder="e.g., 32.5">
+                </div>
+
+                <div class="input-group">
+                    <label for="usageAdjustment">📈 Usage Adjustment</label>
+                    <input type="number" id="usageAdjustment" min="0.1" max="3" step="0.01" value="1.00" placeholder="e.g., 1.15">
+                    <small>1.0 = normal, 1.2 = 20% increase, 0.8 = 20% decrease</small>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="playerPosition">🎯 Position (optional)</label>
+                <select id="playerPosition">
+                    <option value="">Auto-detect from player data</option>
+                    <option value="PG">Point Guard (PG)</option>
+                    <option value="SG">Shooting Guard (SG)</option>
+                    <option value="SF">Small Forward (SF)</option>
+                    <option value="PF">Power Forward (PF)</option>
+                    <option value="C">Center (C)</option>
+                </select>
+                <small>Used for Defense vs Position calculations</small>
+            </div>
+
+            <button onclick="calculateProjection()" class="calculate-btn">
+                <span id="buttonText">Calculate Projection</span>
+                <span id="loadingSpinner" class="loading-spinner" style="display: none;">⏳</span>
+            </button>
+        </div>
+
+        <div id="result" class="result-section" style="display: none;">
+            <div class="result-header">
+                <h3>📊 Projection Results</h3>
+            </div>
+            
+            <div class="result-main">
+                <div class="projected-points">
+                    <span class="points-label">Projected Points</span>
+                    <span class="points-value" id="projectedPoints">--</span>
+                </div>
+            </div>
+
+            <div class="result-details">
+                <div class="player-info">
+                    <h4>Player Info</h4>
+                    <div id="playerInfo"></div>
+                </div>
+
+                <div class="opponent-info">
+                    <h4>Opponent Info</h4>
+                    <div id="opponentInfo"></div>
+                </div>
+
+                <div class="breakdown">
+                    <h4>Points Breakdown</h4>
+                    <div id="pointsBreakdown"></div>
+                </div>
+
+                <div class="calculation-details">
+                    <h4>Calculation Details</h4>
+                    <div id="calculationDetails"></div>
+                </div>
             </div>
         </div>
 
-        <div class="input-group">
-            <label for="playerPosition">🎯 Position (optional)</label>
-            <select id="playerPosition">
-                <option value="">Auto-detect from player data</option>
-                <option value="PG">Point Guard (PG)</option>
-                <option value="SG">Shooting Guard (SG)</option>
-                <option value="SF">Small Forward (SF)</option>
-                <option value="PF">Power Forward (PF)</option>
-                <option value="C">Center (C)</option>
-            </select>
-            <small>Used for Defense vs Position calculations</small>
+        <div id="error" class="error-section" style="display: none;">
+            <h3>❌ Error</h3>
+            <p id="errorMessage"></p>
         </div>
-
-        <button onclick="calculateProjection()" class="calculate-btn">
-            <span id="buttonText">Calculate Projection</span>
-            <span id="loadingSpinner" class="loading-spinner" style="display: none;">⏳</span>
-        </button>
     </div>
 
-    <div id="result" class="result-section" style="display: none;">
-        <div class="result-header">
-            <h3>📊 Projection Results</h3>
-        </div>
-        
-        <div class="result-main">
-            <div class="projected-points">
-                <span class="points-label">Projected Points</span>
-                <span class="points-value" id="projectedPoints">--</span>
-            </div>
-        </div>
+    <footer>
+        <p>Data from 2024-25 NBA Season | Updated: June 28, 2025</p>
+        <p>Formula accounts for pace, usage, defense vs position, and player efficiency</p>
+    </footer>
 
-        <div class="result-details">
-            <div class="player-info">
-                <h4>Player Info</h4>
-                <div id="playerInfo"></div>
-            </div>
+    <script>
+        const API_BASE_URL = window.location.origin; // Uses current domain for Vercel
 
-            <div class="opponent-info">
-                <h4>Opponent Info</h4>
-                <div id="opponentInfo"></div>
-            </div>
+        // --- Autocomplete Specific JavaScript (Integrated) ---
+        const playerSearchInput = document.getElementById('playerName');
+        const autocompleteResults = document.getElementById('autocompleteResults');
 
-            <div class="breakdown">
-                <h4>Points Breakdown</h4>
-                <div id="pointsBreakdown"></div>
-            </div>
+        // Dummy player data for autocomplete (replace with actual top 100 players or API fetch)
+        const players = [
+            "LeBron James", "Stephen Curry", "Kevin Durant", "Nikola Jokic",
+            "Luka Doncic", "Giannis Antetokounmpo", "Joel Embiid", "Devin Booker",
+            "Jayson Tatum", "Ja Morant", "Zion Williamson", "Anthony Davis",
+            "Damian Lillard", "Kawhi Leonard", "Paul George", "Kyrie Irving",
+            "James Harden", "Donovan Mitchell", "Trae Young", "Karl-Anthony Towns",
+            "Bradley Beal", "Rudy Gobert", "Jimmy Butler", "Khris Middleton",
+            "Draymond Green", "Ben Simmons", "Chris Paul", "Russell Westbrook",
+            "Victor Wembanyama", "Scoot Henderson", "Shai Gilgeous-Alexander",
+            "Tyrese Haliburton", "LaMelo Ball", "Cade Cunningham", "Paolo Banchero",
+            "Franz Wagner", "Scottie Barnes", "De'Aaron Fox", "Domantas Sabonis",
+            "Desmond Bane", "Jaren Jackson Jr.", "Bam Adebayo", "Pascal Siakam",
+            "Julius Randle", "RJ Barrett", "Dejounte Murray", "Evan Mobley",
+            "Jarrett Allen", "Kristaps Porzingis", "Tyler Herro", "Fred VanVleet",
+            "Jrue Holiday", "Jaylen Brown", "DeMar DeRozan", "Zach LaVine",
+            "Nikola Vucevic", "Kristaps Porzingis", "Malcolm Brogdon", "Spencer Dinwiddie",
+            "Keldon Johnson", "Anfernee Simons", "Jerami Grant", "Bojan Bogdanovic",
+            "Buddy Hield", "D'Angelo Russell", "Jordan Poole", "Kyle Kuzma",
+            "Andrew Wiggins", "Klay Thompson", "Dillon Brooks", "Gary Trent Jr.",
+            "OG Anunoby", "Mikal Bridges", "Cameron Johnson", "Nic Claxton",
+            "Jalen Brunson", "Tyrese Maxey", "Tobias Harris", "Derrick White",
+            "Al Horford", "Clint Capela", "John Collins", "Harrison Barnes",
+            "Myles Turner", "Jalen Green", "Jabari Smith Jr.", "Alperen Sengun",
+            "Collin Sexton", "Kelly Olynyk", "Walker Kessler", "Lauri Markkanen",
+            "Jamal Murray", "Michael Porter Jr.", "Aaron Gordon", "Nikola Jovic"
+        ];
 
-            <div class="calculation-details">
-                <h4>Calculation Details</h4>
-                <div id="calculationDetails"></div>
-            </div>
-        </div>
-    </div>
+        let selectedIndex = -1; // To track keyboard navigation selection for autocomplete
 
-    <div id="error" class="error-section" style="display: none;">
-        <h3>❌ Error</h3>
-        <p id="errorMessage"></p>
-    </div>
-</div>
+        playerSearchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            autocompleteResults.innerHTML = ''; // Clear previous results
+            selectedIndex = -1; // Reset selection
 
-<footer>
-    <p>Data from 2024-25 NBA Season | Updated: June 28, 2025</p>
-    <p>Formula accounts for pace, usage, defense vs position, and player efficiency</p>
-</footer>
+            if (searchTerm.length === 0) {
+                autocompleteResults.classList.remove('show');
+                return;
+            }
 
-<script>
-    const API_BASE_URL = window.location.origin; // Uses current domain for Vercel
+            const filteredPlayers = players.filter(player =>
+                player.toLowerCase().includes(searchTerm)
+            );
 
-    async function calculateProjection() {
-        const playerName = document.getElementById('playerName').value.trim();
-        const opponentTeam = document.getElementById('opponentTeam').value;
-        const projectedMinutes = parseFloat(document.getElementById('projectedMinutes').value);
-        const usageAdjustment = parseFloat(document.getElementById('usageAdjustment').value);
-        const playerPosition = document.getElementById('playerPosition').value;
+            if (filteredPlayers.length > 0) {
+                filteredPlayers.forEach((player, index) => {
+                    const li = document.createElement('li');
+                    li.textContent = player;
+                    li.addEventListener('click', function() {
+                        playerSearchInput.value = player;
+                        autocompleteResults.classList.remove('show');
+                    });
+                    autocompleteResults.appendChild(li);
+                });
+                autocompleteResults.classList.add('show');
+            } else {
+                autocompleteResults.classList.remove('show');
+            }
+        });
 
-        // Clear previous results
-        hideResults();
-        hideError();
+        // Handle keyboard navigation for autocomplete
+        playerSearchInput.addEventListener('keydown', function(e) {
+            const items = autocompleteResults.querySelectorAll('li');
+            if (items.length === 0) return;
 
-        // Validation
-        if (!playerName) {
-            showError('Please enter a player name');
-            return;
-        }
-        if (!opponentTeam) {
-            showError('Please select an opponent team');
-            return;
-        }
-        if (!projectedMinutes || projectedMinutes <= 0 || projectedMinutes > 48) {
-            showError('Please enter valid projected minutes (1-48)');
-            return;
-        }
-        if (!usageAdjustment || usageAdjustment <= 0) {
-            showError('Please enter a valid usage adjustment');
-            return;
-        }
+            if (e.key === 'ArrowDown') {
+                e.preventDefault(); // Prevent cursor movement in input
+                if (selectedIndex < items.length - 1) {
+                    selectedIndex++;
+                } else {
+                    selectedIndex = 0; // Wrap around
+                }
+                updateSelection(items);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault(); // Prevent cursor movement in input
+                if (selectedIndex > 0) {
+                    selectedIndex--;
+                } else {
+                    selectedIndex = items.length - 1; // Wrap around
+                }
+                updateSelection(items);
+            } else if (e.key === 'Enter') {
+                if (selectedIndex > -1 && autocompleteResults.classList.contains('show')) {
+                    playerSearchInput.value = items[selectedIndex].textContent;
+                    autocompleteResults.classList.remove('show');
+                    // Optionally, trigger calculation on Enter if a suggestion is selected
+                    // calculateProjection(); 
+                } else if (!autocompleteResults.classList.contains('show')) {
+                     // If no suggestions shown, or none selected, just perform calculation
+                     calculateProjection();
+                }
+            } else if (e.key === 'Escape') {
+                autocompleteResults.classList.remove('show');
+                selectedIndex = -1;
+            }
+        });
 
-        // Show loading state
-        setLoadingState(true);
-
-        try {
-            const params = new URLSearchParams({
-                player_name: playerName,
-                opponent_team: opponentTeam,
-                projected_minutes: projectedMinutes,
-                usage_adjustment: usageAdjustment
+        function updateSelection(items) {
+            items.forEach((item, index) => {
+                if (index === selectedIndex) {
+                    item.classList.add('selected');
+                    item.scrollIntoView({ block: 'nearest' }); // Scroll into view if off-screen
+                } else {
+                    item.classList.remove('selected');
+                }
             });
+        }
 
-            if (playerPosition) {
-                params.append('player_position', playerPosition);
+        // Hide autocomplete results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!playerSearchInput.contains(e.target) && !autocompleteResults.contains(e.target)) {
+                autocompleteResults.classList.remove('show');
+                selectedIndex = -1; // Reset selection
+            }
+        });
+        // --- End Autocomplete Specific JavaScript ---
+
+
+        async function calculateProjection() {
+            const playerName = document.getElementById('playerName').value.trim();
+            const opponentTeam = document.getElementById('opponentTeam').value;
+            const projectedMinutes = parseFloat(document.getElementById('projectedMinutes').value);
+            const usageAdjustment = parseFloat(document.getElementById('usageAdjustment').value);
+            const playerPosition = document.getElementById('playerPosition').value;
+
+            // Clear previous results
+            hideResults();
+            hideError();
+
+            // Validation
+            if (!playerName) {
+                showError('Please enter a player name');
+                return;
+            }
+            if (!opponentTeam) {
+                showError('Please select an opponent team');
+                return;
+            }
+            if (isNaN(projectedMinutes) || projectedMinutes <= 0 || projectedMinutes > 48) {
+                showError('Please enter valid projected minutes (1-48)');
+                return;
+            }
+            if (isNaN(usageAdjustment) || usageAdjustment <= 0) {
+                showError('Please enter a valid usage adjustment');
+                return;
             }
 
-            const response = await fetch(`${API_BASE_URL}/api/calculate-projection?${params}`);
-            const data = await response.json();
+            // Show loading state
+            setLoadingState(true);
 
-            if (!response.ok) {
-                throw new Error(data.error || 'API request failed');
+            try {
+                const params = new URLSearchParams({
+                    player_name: playerName,
+                    opponent_team: opponentTeam,
+                    projected_minutes: projectedMinutes,
+                    usage_adjustment: usageAdjustment
+                });
+
+                if (playerPosition) {
+                    params.append('player_position', playerPosition);
+                }
+
+                // Placeholder for API call - assuming your Vercel function will be at /api/calculate-projection
+                const response = await fetch(`${API_BASE_URL}/api/calculate-projection?${params}`);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'API request failed');
+                }
+
+                displayResults(data);
+            } catch (error) {
+                console.error('Error:', error);
+                showError(`Calculation failed: ${error.message}`);
+            } finally {
+                setLoadingState(false);
             }
-
-            displayResults(data);
-        } catch (error) {
-            console.error('Error:', error);
-            showError(`Calculation failed: ${error.message}`);
-        } finally {
-            setLoadingState(false);
         }
-    }
 
-    function displayResults(data) {
-        const { player, opponent, inputs, projection } = data;
+        function displayResults(data) {
+            const { player, opponent, inputs, projection } = data;
 
-        // Main projected points
-        document.getElementById('projectedPoints').textContent = projection.projectedPoints;
+            // Main projected points
+            document.getElementById('projectedPoints').textContent = projection.projectedPoints;
 
-        // Player info
-        document.getElementById('playerInfo').innerHTML = `
-            <p><strong>${player.name}</strong></p>
-            <p>Team: ${player.team} | Position: ${player.position}</p>
-            <p>Season Average: ${player.season_avg_ppg} PPG</p>
-        `;
+            // Player info
+            document.getElementById('playerInfo').innerHTML = `
+                <p><strong>${player.name}</strong></p>
+                <p>Team: ${player.team} | Position: ${player.position}</p>
+                <p>Season Average: ${player.season_avg_ppg} PPG</p>
+            `;
 
-        // Opponent info
-        document.getElementById('opponentInfo').innerHTML = `
-            <p><strong>${opponent.team}</strong></p>
-            <p>Pace: ${opponent.pace} (Rank: ${opponent.pace_rank})</p>
-            <p>Pace Adjustment: ${projection.breakdown.paceAdjustment}x</p>
-        `;
+            // Opponent info
+            document.getElementById('opponentInfo').innerHTML = `
+                <p><strong>${opponent.team}</strong></p>
+                <p>Pace: ${opponent.pace} (Rank: ${opponent.pace_rank})</p>
+                <p>Pace Adjustment: ${projection.breakdown.paceAdjustment}x</p>
+            `;
 
-        // Points breakdown
-        document.getElementById('pointsBreakdown').innerHTML = `
-            <div class="breakdown-item">
-                <span>2-Point FGs:</span>
-                <span>${projection.breakdown.twoPointers} pts</span>
-            </div>
-            <div class="breakdown-item">
-                <span>3-Point FGs:</span>
-                <span>${projection.breakdown.threePointers} pts</span>
-            </div>
-            <div class="breakdown-item">
-                <span>Free Throws:</span>
-                <span>${projection.breakdown.freeThrows} pts</span>
-            </div>
-        `;
+            // Points breakdown
+            document.getElementById('pointsBreakdown').innerHTML = `
+                <div class="breakdown-item">
+                    <span>2-Point FGs:</span>
+                    <span>${projection.breakdown.twoPointers} pts</span>
+                </div>
+                <div class="breakdown-item">
+                    <span>3-Point FGs:</span>
+                    <span>${projection.breakdown.threePointers} pts</span>
+                </div>
+                <div class="breakdown-item">
+                    <span>Free Throws:</span>
+                    <span>${projection.breakdown.freeThrows} pts</span>
+                </div>
+            `;
 
-        // Calculation details
-        document.getElementById('calculationDetails').innerHTML = `
-            <div class="breakdown-item">
-                <span>Projected FGA:</span>
-                <span>${projection.breakdown.projectedFGA}</span>
-            </div>
-            <div class="breakdown-item">
-                <span>Projected FTA:</span>
-                <span>${projection.breakdown.projectedFTA}</span>
-            </div>
-            <div class="breakdown-item">
-                <span>Minutes Used:</span>
-                <span>${inputs.projected_minutes}</span>
-            </div>
-            <div class="breakdown-item">
-                <span>Usage Adjustment:</span>
-                <span>${inputs.usage_adjustment}x</span>
-            </div>
-        `;
+            // Calculation details
+            document.getElementById('calculationDetails').innerHTML = `
+                <div class="breakdown-item">
+                    <span>Projected FGA:</span>
+                    <span>${projection.breakdown.projectedFGA}</span>
+                </div>
+                <div class="breakdown-item">
+                    <span>Projected FTA:</span>
+                    <span>${projection.breakdown.projectedFTA}</span>
+                </div>
+                <div class="breakdown-item">
+                    <span>Minutes Used:</span>
+                    <span>${inputs.projected_minutes}</span>
+                </div>
+                <div class="breakdown-item">
+                    <span>Usage Adjustment:</span>
+                    <span>${inputs.usage_adjustment}x</span>
+                </div>
+            `;
 
-        showResults();
-    }
-
-    function showResults() {
-        document.getElementById('result').style.display = 'block';
-    }
-
-    function hideResults() {
-        document.getElementById('result').style.display = 'none';
-    }
-
-    function showError(message) {
-        document.getElementById('errorMessage').textContent = message;
-        document.getElementById('error').style.display = 'block';
-    }
-
-    function hideError() {
-        document.getElementById('error').style.display = 'none';
-    }
-
-    function setLoadingState(loading) {
-        const buttonText = document.getElementById('buttonText');
-        const spinner = document.getElementById('loadingSpinner');
-        const button = document.querySelector('.calculate-btn');
-
-        if (loading) {
-            buttonText.style.display = 'none';
-            spinner.style.display = 'inline';
-            button.disabled = true;
-        } else {
-            buttonText.style.display = 'inline';
-            spinner.style.display = 'none';
-            button.disabled = false;
+            showResults();
         }
-    }
 
-    // Allow Enter key to trigger calculation
-    document.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            calculateProjection();
+        function showResults() {
+            document.getElementById('result').style.display = 'block';
         }
-    });
-</script>
-```
 
+        function hideResults() {
+            document.getElementById('result').style.display = 'none';
+        }
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('error').style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('error').style.display = 'none';
+        }
+
+        function setLoadingState(loading) {
+            const buttonText = document.getElementById('buttonText');
+            const spinner = document.getElementById('loadingSpinner');
+            const button = document.querySelector('.calculate-btn');
+
+            if (loading) {
+                buttonText.style.display = 'none';
+                spinner.style.display = 'inline';
+                button.disabled = true;
+            } else {
+                buttonText.style.display = 'inline';
+                spinner.style.display = 'none';
+                button.disabled = false;
+            }
+        }
+
+        // Allow Enter key to trigger calculation
+        document.addEventListener('keypress', function(e) {
+            // Only trigger if Enter is pressed and no autocomplete suggestions are active and selected.
+            // If autocomplete is active, Enter is handled by its keydown listener.
+            if (e.key === 'Enter' && (!autocompleteResults.classList.contains('show') || selectedIndex === -1)) {
+                calculateProjection();
+            }
+        });
+    </script>
 </body>
 </html>
