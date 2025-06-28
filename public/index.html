@@ -221,7 +221,17 @@
             border-radius: 8px;
             padding: 25px;
             margin-top: 25px;
+            /* Animation properties */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
+
+        .result-section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
 
         .result-header {
             text-align: center;
@@ -337,7 +347,7 @@
             margin: 5px 0;
         }
 
-        /* Autocomplete Specific Styles (from previous example) */
+        /* Autocomplete Specific Styles */
         .autocomplete-wrapper {
             position: relative;
             width: 100%;
@@ -376,6 +386,62 @@
             background-color: #323d5a;
             color: #cfb779;
         }
+
+        /* --- Mobile Responsiveness (Media Queries) --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em; /* Smaller heading on smaller screens */
+            }
+            .subtitle {
+                font-size: 1em;
+            }
+            .container {
+                padding: 20px; /* Less padding on smaller screens */
+            }
+            .formula-display {
+                padding: 15px;
+            }
+            .formula-content p {
+                font-size: 0.9em;
+            }
+            .input-row {
+                flex-direction: column; /* Stack minutes and usage vertically */
+                gap: 15px;
+            }
+            .result-details {
+                grid-template-columns: 1fr; /* Stack result details vertically */
+            }
+            .result-section {
+                padding: 20px;
+            }
+            .projected-points {
+                min-width: unset; /* Allow it to shrink */
+                width: 100%; /* Take full width */
+            }
+            .points-value {
+                font-size: 2.5em; /* Smaller font for projected points */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .container {
+                padding: 15px;
+            }
+            input[type="text"],
+            input[type="number"],
+            select {
+                padding: 10px;
+                font-size: 0.95em;
+            }
+            .calculate-btn {
+                padding: 12px 20px;
+                font-size: 1.1em;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -397,9 +463,11 @@
         </div>
 
         <div class="input-section">
-            <div class="input-group autocomplete-wrapper"> <label for="playerName">🏀 Player Name</label>
+            <div class="input-group autocomplete-wrapper">
+                <label for="playerName">🏀 Player Name</label>
                 <input type="text" id="playerName" placeholder="e.g., LeBron James, Luka Doncic" value="Shai Gilgeous-Alexander">
-                <ul id="autocompleteResults"></ul> <small>Start typing to search from top 100 players</small>
+                <ul id="autocompleteResults"></ul>
+                <small>Start typing to search from top 100 players</small>
             </div>
 
             <div class="input-group">
@@ -518,13 +586,12 @@
     </footer>
 
     <script>
-        const API_BASE_URL = window.location.origin; // Uses current domain for Vercel
+        const API_BASE_URL = window.location.origin;
 
-        // --- Autocomplete Specific JavaScript (Integrated) ---
+        // --- Autocomplete Specific JavaScript ---
         const playerSearchInput = document.getElementById('playerName');
         const autocompleteResults = document.getElementById('autocompleteResults');
 
-        // Dummy player data for autocomplete (replace with actual top 100 players or API fetch)
         const players = [
             "LeBron James", "Stephen Curry", "Kevin Durant", "Nikola Jokic",
             "Luka Doncic", "Giannis Antetokounmpo", "Joel Embiid", "Devin Booker",
@@ -552,12 +619,12 @@
             "Jamal Murray", "Michael Porter Jr.", "Aaron Gordon", "Nikola Jovic"
         ];
 
-        let selectedIndex = -1; // To track keyboard navigation selection for autocomplete
+        let selectedIndex = -1;
 
         playerSearchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
-            autocompleteResults.innerHTML = ''; // Clear previous results
-            selectedIndex = -1; // Reset selection
+            autocompleteResults.innerHTML = '';
+            selectedIndex = -1;
 
             if (searchTerm.length === 0) {
                 autocompleteResults.classList.remove('show');
@@ -584,35 +651,31 @@
             }
         });
 
-        // Handle keyboard navigation for autocomplete
         playerSearchInput.addEventListener('keydown', function(e) {
             const items = autocompleteResults.querySelectorAll('li');
             if (items.length === 0) return;
 
             if (e.key === 'ArrowDown') {
-                e.preventDefault(); // Prevent cursor movement in input
+                e.preventDefault();
                 if (selectedIndex < items.length - 1) {
                     selectedIndex++;
                 } else {
-                    selectedIndex = 0; // Wrap around
+                    selectedIndex = 0;
                 }
                 updateSelection(items);
             } else if (e.key === 'ArrowUp') {
-                e.preventDefault(); // Prevent cursor movement in input
+                e.preventDefault();
                 if (selectedIndex > 0) {
                     selectedIndex--;
                 } else {
-                    selectedIndex = items.length - 1; // Wrap around
+                    selectedIndex = items.length - 1;
                 }
                 updateSelection(items);
             } else if (e.key === 'Enter') {
                 if (selectedIndex > -1 && autocompleteResults.classList.contains('show')) {
                     playerSearchInput.value = items[selectedIndex].textContent;
                     autocompleteResults.classList.remove('show');
-                    // Optionally, trigger calculation on Enter if a suggestion is selected
-                    // calculateProjection(); 
                 } else if (!autocompleteResults.classList.contains('show')) {
-                     // If no suggestions shown, or none selected, just perform calculation
                      calculateProjection();
                 }
             } else if (e.key === 'Escape') {
@@ -625,18 +688,17 @@
             items.forEach((item, index) => {
                 if (index === selectedIndex) {
                     item.classList.add('selected');
-                    item.scrollIntoView({ block: 'nearest' }); // Scroll into view if off-screen
+                    item.scrollIntoView({ block: 'nearest' });
                 } else {
                     item.classList.remove('selected');
                 }
             });
         }
 
-        // Hide autocomplete results when clicking outside
         document.addEventListener('click', function(e) {
             if (!playerSearchInput.contains(e.target) && !autocompleteResults.contains(e.target)) {
                 autocompleteResults.classList.remove('show');
-                selectedIndex = -1; // Reset selection
+                selectedIndex = -1;
             }
         });
         // --- End Autocomplete Specific JavaScript ---
@@ -649,11 +711,9 @@
             const usageAdjustment = parseFloat(document.getElementById('usageAdjustment').value);
             const playerPosition = document.getElementById('playerPosition').value;
 
-            // Clear previous results
-            hideResults();
+            hideResults(); // Hide results to prepare for new calculation
             hideError();
 
-            // Validation
             if (!playerName) {
                 showError('Please enter a player name');
                 return;
@@ -671,7 +731,6 @@
                 return;
             }
 
-            // Show loading state
             setLoadingState(true);
 
             try {
@@ -686,7 +745,6 @@
                     params.append('player_position', playerPosition);
                 }
 
-                // Placeholder for API call - assuming your Vercel function will be at /api/calculate-projection
                 const response = await fetch(`${API_BASE_URL}/api/calculate-projection?${params}`);
                 const data = await response.json();
 
@@ -706,24 +764,20 @@
         function displayResults(data) {
             const { player, opponent, inputs, projection } = data;
 
-            // Main projected points
             document.getElementById('projectedPoints').textContent = projection.projectedPoints;
 
-            // Player info
             document.getElementById('playerInfo').innerHTML = `
                 <p><strong>${player.name}</strong></p>
                 <p>Team: ${player.team} | Position: ${player.position}</p>
                 <p>Season Average: ${player.season_avg_ppg} PPG</p>
             `;
 
-            // Opponent info
             document.getElementById('opponentInfo').innerHTML = `
                 <p><strong>${opponent.team}</strong></p>
                 <p>Pace: ${opponent.pace} (Rank: ${opponent.pace_rank})</p>
                 <p>Pace Adjustment: ${projection.breakdown.paceAdjustment}x</p>
             `;
 
-            // Points breakdown
             document.getElementById('pointsBreakdown').innerHTML = `
                 <div class="breakdown-item">
                     <span>2-Point FGs:</span>
@@ -739,7 +793,6 @@
                 </div>
             `;
 
-            // Calculation details
             document.getElementById('calculationDetails').innerHTML = `
                 <div class="breakdown-item">
                     <span>Projected FGA:</span>
@@ -758,17 +811,72 @@
                     <span>${inputs.usage_adjustment}x</span>
                 </div>
             `;
-
             showResults();
         }
 
+        // --- Fade-in Animation Logic ---
+        const resultSection = document.getElementById('result');
+        let intersectionObserver; // Declare globally to manage observer lifecycle
+
         function showResults() {
-            document.getElementById('result').style.display = 'block';
+            // This function is called when results are ready to be displayed.
+            // We initially hide it with display: none, so we change it to 'block'
+            // for the observer to detect it, but keep opacity 0 for the animation.
+            resultSection.style.display = 'block'; 
+            // The 'fade-in' class will be added by the observer when it's visible
+            
+            // Re-initialize observer if it's not already set up or was disconnected
+            if (!intersectionObserver) {
+                setupIntersectionObserver();
+            } else {
+                 // If observer already exists, just ensure it's observing
+                 intersectionObserver.observe(resultSection);
+            }
+            // Force reflow to ensure animation plays correctly when display changes
+            void resultSection.offsetWidth; 
         }
 
         function hideResults() {
-            document.getElementById('result').style.display = 'none';
+            // Remove the fade-in class immediately
+            resultSection.classList.remove('fade-in');
+            // Hide the element completely
+            resultSection.style.display = 'none'; 
+            // Disconnect observer when results are hidden to avoid false positives
+            if (intersectionObserver) {
+                intersectionObserver.disconnect();
+            }
         }
+
+        function setupIntersectionObserver() {
+            // Only set up observer if it doesn't exist
+            if (intersectionObserver) return; 
+
+            const options = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            intersectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // If the target element is visible, add the fade-in class
+                        entry.target.classList.add('fade-in');
+                        // Stop observing once it has faded in (optional, but good for performance)
+                        observer.unobserve(entry.target);
+                    } else {
+                        // If it goes out of view, remove the fade-in class
+                        entry.target.classList.remove('fade-in');
+                    }
+                });
+            }, options);
+
+            // Start observing the result section
+            intersectionObserver.observe(resultSection);
+        }
+
+        // Initial setup for the observer (can be called on page load)
+        document.addEventListener('DOMContentLoaded', setupIntersectionObserver);
 
         function showError(message) {
             document.getElementById('errorMessage').textContent = message;
@@ -795,10 +903,7 @@
             }
         }
 
-        // Allow Enter key to trigger calculation
         document.addEventListener('keypress', function(e) {
-            // Only trigger if Enter is pressed and no autocomplete suggestions are active and selected.
-            // If autocomplete is active, Enter is handled by its keydown listener.
             if (e.key === 'Enter' && (!autocompleteResults.classList.contains('show') || selectedIndex === -1)) {
                 calculateProjection();
             }
