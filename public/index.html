@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Player Projection Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏀 NBA Player Projection Calculator</h1>
+            <p class="subtitle">Calculate projected points using real 2024-25 NBA data</p>
+        </header>
+
+```
+    <div class="formula-display">
+        <h3>📊 Projection Formula</h3>
+        <div class="formula-content">
+            <p><strong>PaceAdj</strong> = Opponent Pace ÷ League Average Pace</p>
+            <p><strong>FGA_proj</strong> = FGA_36 × (Minutes ÷ 36) × Usage% × DVP_FGA × PaceAdj</p>
+            <p><strong>FTA_proj</strong> = FTA_36 × (Minutes ÷ 36) × Usage% × DVP_FTA × PaceAdj</p>
+            <p><strong>Points</strong> = [2P attempts × 2P% × 2] + [3P attempts × 3P% × 3] + [FTA × FT%]</p>
+        </div>
+        <small>All player stats, team pace, and defense vs position data automatically loaded from 2024-25 season</small>
+    </div>
+
+    <div class="input-section">
+        <div class="input-group">
+            <label for="playerName">🏀 Player Name</label>
+            <input type="text" id="playerName" placeholder="e.g., LeBron James, Luka Doncic" value="Shai Gilgeous-Alexander">
+            <small>Start typing to search from top 100 players</small>
+        </div>
+
+        <div class="input-group">
+            <label for="opponentTeam">🛡️ Opponent Team</label>
+            <select id="opponentTeam">
+                <option value="">Select opponent team...</option>
+                <option value="ATL">Atlanta Hawks</option>
+                <option value="BOS">Boston Celtics</option>
+                <option value="BRK">Brooklyn Nets</option>
+                <option value="CHO">Charlotte Hornets</option>
+                <option value="CHI">Chicago Bulls</option>
+                <option value="CLE">Cleveland Cavaliers</option>
+                <option value="DAL">Dallas Mavericks</option>
+                <option value="DEN">Denver Nuggets</option>
+                <option value="DET">Detroit Pistons</option>
+                <option value="GSW">Golden State Warriors</option>
+                <option value="HOU">Houston Rockets</option>
+                <option value="IND">Indiana Pacers</option>
+                <option value="LAC">Los Angeles Clippers</option>
+                <option value="LAL">Los Angeles Lakers</option>
+                <option value="MEM">Memphis Grizzlies</option>
+                <option value="MIA">Miami Heat</option>
+                <option value="MIL">Milwaukee Bucks</option>
+                <option value="MIN">Minnesota Timberwolves</option>
+                <option value="NOP">New Orleans Pelicans</option>
+                <option value="NYK">New York Knicks</option>
+                <option value="OKC">Oklahoma City Thunder</option>
+                <option value="ORL">Orlando Magic</option>
+                <option value="PHI">Philadelphia 76ers</option>
+                <option value="PHO">Phoenix Suns</option>
+                <option value="POR">Portland Trail Blazers</option>
+                <option value="SAC">Sacramento Kings</option>
+                <option value="SAS">San Antonio Spurs</option>
+                <option value="TOR">Toronto Raptors</option>
+                <option value="UTA">Utah Jazz</option>
+                <option value="WAS">Washington Wizards</option>
+            </select>
+        </div>
+
+        <div class="input-row">
+            <div class="input-group">
+                <label for="projectedMinutes">⏱️ Projected Minutes</label>
+                <input type="number" id="projectedMinutes" min="1" max="48" step="0.1" value="32" placeholder="e.g., 32.5">
+            </div>
+
+            <div class="input-group">
+                <label for="usageAdjustment">📈 Usage Adjustment</label>
+                <input type="number" id="usageAdjustment" min="0.1" max="3" step="0.01" value="1.00" placeholder="e.g., 1.15">
+                <small>1.0 = normal, 1.2 = 20% increase, 0.8 = 20% decrease</small>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="playerPosition">🎯 Position (optional)</label>
+            <select id="playerPosition">
+                <option value="">Auto-detect from player data</option>
+                <option value="PG">Point Guard (PG)</option>
+                <option value="SG">Shooting Guard (SG)</option>
+                <option value="SF">Small Forward (SF)</option>
+                <option value="PF">Power Forward (PF)</option>
+                <option value="C">Center (C)</option>
+            </select>
+            <small>Used for Defense vs Position calculations</small>
+        </div>
+
+        <button onclick="calculateProjection()" class="calculate-btn">
+            <span id="buttonText">Calculate Projection</span>
+            <span id="loadingSpinner" class="loading-spinner" style="display: none;">⏳</span>
+        </button>
+    </div>
+
+    <div id="result" class="result-section" style="display: none;">
+        <div class="result-header">
+            <h3>📊 Projection Results</h3>
+        </div>
+        
+        <div class="result-main">
+            <div class="projected-points">
+                <span class="points-label">Projected Points</span>
+                <span class="points-value" id="projectedPoints">--</span>
+            </div>
+        </div>
+
+        <div class="result-details">
+            <div class="player-info">
+                <h4>Player Info</h4>
+                <div id="playerInfo"></div>
+            </div>
+
+            <div class="opponent-info">
+                <h4>Opponent Info</h4>
+                <div id="opponentInfo"></div>
+            </div>
+
+            <div class="breakdown">
+                <h4>Points Breakdown</h4>
+                <div id="pointsBreakdown"></div>
+            </div>
+
+            <div class="calculation-details">
+                <h4>Calculation Details</h4>
+                <div id="calculationDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="error" class="error-section" style="display: none;">
+        <h3>❌ Error</h3>
+        <p id="errorMessage"></p>
+    </div>
+</div>
+
+<footer>
+    <p>Data from 2024-25 NBA Season | Updated: June 28, 2025</p>
+    <p>Formula accounts for pace, usage, defense vs position, and player efficiency</p>
+</footer>
+
+<script>
+    const API_BASE_URL = window.location.origin; // Uses current domain for Vercel
+
+    async function calculateProjection() {
+        const playerName = document.getElementById('playerName').value.trim();
+        const opponentTeam = document.getElementById('opponentTeam').value;
+        const projectedMinutes = parseFloat(document.getElementById('projectedMinutes').value);
+        const usageAdjustment = parseFloat(document.getElementById('usageAdjustment').value);
+        const playerPosition = document.getElementById('playerPosition').value;
+
+        // Clear previous results
+        hideResults();
+        hideError();
+
+        // Validation
+        if (!playerName) {
+            showError('Please enter a player name');
+            return;
+        }
+        if (!opponentTeam) {
+            showError('Please select an opponent team');
+            return;
+        }
+        if (!projectedMinutes || projectedMinutes <= 0 || projectedMinutes > 48) {
+            showError('Please enter valid projected minutes (1-48)');
+            return;
+        }
+        if (!usageAdjustment || usageAdjustment <= 0) {
+            showError('Please enter a valid usage adjustment');
+            return;
+        }
+
+        // Show loading state
+        setLoadingState(true);
+
+        try {
+            const params = new URLSearchParams({
+                player_name: playerName,
+                opponent_team: opponentTeam,
+                projected_minutes: projectedMinutes,
+                usage_adjustment: usageAdjustment
+            });
+
+            if (playerPosition) {
+                params.append('player_position', playerPosition);
+            }
+
+            const response = await fetch(`${API_BASE_URL}/api/calculate-projection?${params}`);
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'API request failed');
+            }
+
+            displayResults(data);
+        } catch (error) {
+            console.error('Error:', error);
+            showError(`Calculation failed: ${error.message}`);
+        } finally {
+            setLoadingState(false);
+        }
+    }
+
+    function displayResults(data) {
+        const { player, opponent, inputs, projection } = data;
+
+        // Main projected points
+        document.getElementById('projectedPoints').textContent = projection.projectedPoints;
+
+        // Player info
+        document.getElementById('playerInfo').innerHTML = `
+            <p><strong>${player.name}</strong></p>
+            <p>Team: ${player.team} | Position: ${player.position}</p>
+            <p>Season Average: ${player.season_avg_ppg} PPG</p>
+        `;
+
+        // Opponent info
+        document.getElementById('opponentInfo').innerHTML = `
+            <p><strong>${opponent.team}</strong></p>
+            <p>Pace: ${opponent.pace} (Rank: ${opponent.pace_rank})</p>
+            <p>Pace Adjustment: ${projection.breakdown.paceAdjustment}x</p>
+        `;
+
+        // Points breakdown
+        document.getElementById('pointsBreakdown').innerHTML = `
+            <div class="breakdown-item">
+                <span>2-Point FGs:</span>
+                <span>${projection.breakdown.twoPointers} pts</span>
+            </div>
+            <div class="breakdown-item">
+                <span>3-Point FGs:</span>
+                <span>${projection.breakdown.threePointers} pts</span>
+            </div>
+            <div class="breakdown-item">
+                <span>Free Throws:</span>
+                <span>${projection.breakdown.freeThrows} pts</span>
+            </div>
+        `;
+
+        // Calculation details
+        document.getElementById('calculationDetails').innerHTML = `
+            <div class="breakdown-item">
+                <span>Projected FGA:</span>
+                <span>${projection.breakdown.projectedFGA}</span>
+            </div>
+            <div class="breakdown-item">
+                <span>Projected FTA:</span>
+                <span>${projection.breakdown.projectedFTA}</span>
+            </div>
+            <div class="breakdown-item">
+                <span>Minutes Used:</span>
+                <span>${inputs.projected_minutes}</span>
+            </div>
+            <div class="breakdown-item">
+                <span>Usage Adjustment:</span>
+                <span>${inputs.usage_adjustment}x</span>
+            </div>
+        `;
+
+        showResults();
+    }
+
+    function showResults() {
+        document.getElementById('result').style.display = 'block';
+    }
+
+    function hideResults() {
+        document.getElementById('result').style.display = 'none';
+    }
+
+    function showError(message) {
+        document.getElementById('errorMessage').textContent = message;
+        document.getElementById('error').style.display = 'block';
+    }
+
+    function hideError() {
+        document.getElementById('error').style.display = 'none';
+    }
+
+    function setLoadingState(loading) {
+        const buttonText = document.getElementById('buttonText');
+        const spinner = document.getElementById('loadingSpinner');
+        const button = document.querySelector('.calculate-btn');
+
+        if (loading) {
+            buttonText.style.display = 'none';
+            spinner.style.display = 'inline';
+            button.disabled = true;
+        } else {
+            buttonText.style.display = 'inline';
+            spinner.style.display = 'none';
+            button.disabled = false;
+        }
+    }
+
+    // Allow Enter key to trigger calculation
+    document.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            calculateProjection();
+        }
+    });
+</script>
+```
+
+</body>
+</html>
