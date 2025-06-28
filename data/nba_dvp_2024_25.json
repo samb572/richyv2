@@ -1,202 +1,1090 @@
 {
-“nba_defense_vs_position_2024_25”: {
-“last_updated”: “2025-06-28”,
-“season”: “2024-25”,
-“source”: “FantasyPros FanDuel DVP”,
-“explanation”: “DVP factors represent multipliers for field goal attempts and free throw attempts allowed to each position relative to league average (1.0 = average, >1.0 = more attempts allowed, <1.0 = fewer attempts allowed)”,
-“teams”: [
-{
-“team”: “ATL”,
-“team_name”: “Atlanta Hawks”,
-“defense_vs_position”: {
-“PG”: {
-“fanduel_points_allowed”: 48.02,
-“rank_defense”: 28,
-“dvp_fga_factor”: 1.15,
-“dvp_fta_factor”: 1.12
-},
-“SG”: {
-“fanduel_points_allowed”: 47.94,
-“rank_defense”: 27,
-“dvp_fga_factor”: 1.14,
-“dvp_fta_factor”: 1.11
-},
-“SF”: {
-“fanduel_points_allowed”: 47.20,
-“rank_defense”: 25,
-“dvp_fga_factor”: 1.12,
-“dvp_fta_factor”: 1.09
-},
-“PF”: {
-“fanduel_points_allowed”: 52.80,
-“rank_defense”: 29,
-“dvp_fga_factor”: 1.25,
-“dvp_fta_factor”: 1.20
-},
-“C”: {
-“fanduel_points_allowed”: 53.96,
-“rank_defense”: 30,
-“dvp_fga_factor”: 1.28,
-“dvp_fta_factor”: 1.22
+    "nba_defense_vs_position_2024_25": {
+        "last_updated": "2025-06-28",
+        "season": "2024-25",
+        "source": "FantasyPros FanDuel DVP",
+        "explanation": "DVP factors represent multipliers for field goal attempts and free throw attempts allowed to each position relative to league average (1.0 = average, >1.0 = more attempts allowed, <1.0 = fewer attempts allowed)",
+        "teams": [
+            {
+                "team": "ATL",
+                "team_name": "Atlanta Hawks",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 48.02,
+                        "rank_defense": 28,
+                        "dvp_fga_factor": 1.15,
+                        "dvp_fta_factor": 1.12
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 47.94,
+                        "rank_defense": 27,
+                        "dvp_fga_factor": 1.14,
+                        "dvp_fta_factor": 1.11
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 47.20,
+                        "rank_defense": 25,
+                        "dvp_fga_factor": 1.12,
+                        "dvp_fta_factor": 1.09
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 52.80,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.25,
+                        "dvp_fta_factor": 1.20
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 53.96,
+                        "rank_defense": 30,
+                        "dvp_fga_factor": 1.28,
+                        "dvp_fta_factor": 1.22
+                    }
+                }
+            },
+            {
+                "team": "BOS",
+                "team_name": "Boston Celtics",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 42.30,
+                        "rank_defense": 8,
+                        "dvp_fga_factor": 0.92,
+                        "dvp_fta_factor": 0.94
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 40.70,
+                        "rank_defense": 6,
+                        "dvp_fga_factor": 0.89,
+                        "dvp_fta_factor": 0.91
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 40.34,
+                        "rank_defense": 5,
+                        "dvp_fga_factor": 0.88,
+                        "dvp_fta_factor": 0.90
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 45.91,
+                        "rank_defense": 3,
+                        "dvp_fga_factor": 0.85,
+                        "dvp_fta_factor": 0.87
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 46.62,
+                        "rank_defense": 4,
+                        "dvp_fga_factor": 0.86,
+                        "dvp_fta_factor": 0.88
+                    }
+                }
+            },
+            {
+                "team": "BRK",
+                "team_name": "Brooklyn Nets",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 46.16,
+                        "rank_defense": 22,
+                        "dvp_fga_factor": 1.08,
+                        "dvp_fta_factor": 1.05
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 48.10,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.13,
+                        "dvp_fta_factor": 1.10
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 47.67,
+                        "rank_defense": 28,
+                        "dvp_fga_factor": 1.12,
+                        "dvp_fta_factor": 1.09
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 56.23,
+                        "rank_defense": 30,
+                        "dvp_fga_factor": 1.33,
+                        "dvp_fta_factor": 1.28
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 55.88,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.32,
+                        "dvp_fta_factor": 1.27
+                    }
+                }
+            },
+            {
+                "team": "CHI",
+                "team_name": "Chicago Bulls",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 48.90,
+                        "rank_defense": 30,
+                        "dvp_fga_factor": 1.16,
+                        "dvp_fta_factor": 1.13
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 46.34,
+                        "rank_defense": 21,
+                        "dvp_fga_factor": 1.08,
+                        "dvp_fta_factor": 1.05
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 47.81,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.13,
+                        "dvp_fta_factor": 1.10
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 57.44,
+                        "rank_defense": 30,
+                        "dvp_fga_factor": 1.36,
+                        "dvp_fta_factor": 1.31
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 53.39,
+                        "rank_defense": 28,
+                        "dvp_fga_factor": 1.26,
+                        "dvp_fta_factor": 1.21
+                    }
+                }
+            },
+            {
+                "team": "CHA",
+                "team_name": "Charlotte Hornets",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 47.48,
+                        "rank_defense": 26,
+                        "dvp_fga_factor": 1.12,
+                        "dvp_fta_factor": 1.09
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 49.96,
+                        "rank_defense": 30,
+                        "dvp_fga_factor": 1.18,
+                        "dvp_fta_factor": 1.15
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 48.99,
+                        "rank_defense": 30,
+                        "dvp_fga_factor": 1.16,
+                        "dvp_fta_factor": 1.13
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 57.41,
+                        "rank_defense": 30,
+                        "dvp_fga_factor": 1.36,
+                        "dvp_fta_factor": 1.31
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 55.74,
+                        "rank_defense": 28,
+                        "dvp_fga_factor": 1.32,
+                        "dvp_fta_factor": 1.27
+                    }
+                }
+            },
+            {
+                "team": "CLE",
+                "team_name": "Cleveland Cavaliers",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 44.77,
+                        "rank_defense": 16,
+                        "dvp_fga_factor": 1.02,
+                        "dvp_fta_factor": 1.00
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 43.30,
+                        "rank_defense": 12,
+                        "dvp_fga_factor": 0.98,
+                        "dvp_fta_factor": 0.99
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 42.15,
+                        "rank_defense": 12,
+                        "dvp_fga_factor": 0.96,
+                        "dvp_fta_factor": 0.97
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 47.88,
+                        "rank_defense": 8,
+                        "dvp_fga_factor": 0.90,
+                        "dvp_fta_factor": 0.92
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 49.65,
+                        "rank_defense": 13,
+                        "dvp_fga_factor": 0.93,
+                        "dvp_fta_factor": 0.95
+                    }
+                }
+            },
+            {
+                "team": "DAL",
+                "team_name": "Dallas Mavericks",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 45.45,
+                        "rank_defense": 19,
+                        "dvp_fga_factor": 1.05,
+                        "dvp_fta_factor": 1.02
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 44.59,
+                        "rank_defense": 17,
+                        "dvp_fga_factor": 1.03,
+                        "dvp_fta_factor": 1.00
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 45.19,
+                        "rank_defense": 19,
+                        "dvp_fga_factor": 1.06,
+                        "dvp_fta_factor": 1.03
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 50.14,
+                        "rank_defense": 19,
+                        "dvp_fga_factor": 1.18,
+                        "dvp_fta_factor": 1.14
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 49.20,
+                        "rank_defense": 11,
+                        "dvp_fga_factor": 1.16,
+                        "dvp_fta_factor": 1.11
+                    }
+                }
+            },
+            {
+                "team": "DEN",
+                "team_name": "Denver Nuggets",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 44.89,
+                        "rank_defense": 17,
+                        "dvp_fga_factor": 1.02,
+                        "dvp_fta_factor": 1.00
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 43.14,
+                        "rank_defense": 11,
+                        "dvp_fga_factor": 0.97,
+                        "dvp_fta_factor": 0.98
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 41.52,
+                        "rank_defense": 9,
+                        "dvp_fga_factor": 0.95,
+                        "dvp_fta_factor": 0.96
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 46.22,
+                        "rank_defense": 4,
+                        "dvp_fga_factor": 0.86,
+                        "dvp_fta_factor": 0.88
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 47.78,
+                        "rank_defense": 6,
+                        "dvp_fga_factor": 0.89,
+                        "dvp_fta_factor": 0.91
+                    }
+                }
+            },
+            {
+                "team": "DET",
+                "team_name": "Detroit Pistons",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 47.60,
+                        "rank_defense": 27,
+                        "dvp_fga_factor": 1.13,
+                        "dvp_fta_factor": 1.10
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 45.48,
+                        "rank_defense": 19,
+                        "dvp_fga_factor": 1.07,
+                        "dvp_fta_factor": 1.04
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 44.20,
+                        "rank_defense": 17,
+                        "dvp_fga_factor": 1.04,
+                        "dvp_fta_factor": 1.01
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 49.80,
+                        "rank_defense": 17,
+                        "dvp_fga_factor": 1.17,
+                        "dvp_fta_factor": 1.13
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 51.20,
+                        "rank_defense": 21,
+                        "dvp_fga_factor": 1.21,
+                        "dvp_fta_factor": 1.16
+                    }
+                }
+            },
+            {
+                "team": "GSW",
+                "team_name": "Golden State Warriors",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 43.86,
+                        "rank_defense": 12,
+                        "dvp_fga_factor": 0.99,
+                        "dvp_fta_factor": 1.00
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 41.52,
+                        "rank_defense": 8,
+                        "dvp_fga_factor": 0.93,
+                        "dvp_fta_factor": 0.95
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 40.58,
+                        "rank_defense": 6,
+                        "dvp_fga_factor": 0.89,
+                        "dvp_fta_factor": 0.91
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 47.24,
+                        "rank_defense": 7,
+                        "dvp_fga_factor": 0.88,
+                        "dvp_fta_factor": 0.90
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 48.77,
+                        "rank_defense": 9,
+                        "dvp_fga_factor": 0.91,
+                        "dvp_fta_factor": 0.93
+                    }
+                }
+            },
+            {
+                "team": "HOU",
+                "team_name": "Houston Rockets",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 45.33,
+                        "rank_defense": 18,
+                        "dvp_fga_factor": 1.04,
+                        "dvp_fta_factor": 1.01
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 44.15,
+                        "rank_defense": 16,
+                        "dvp_fga_factor": 1.02,
+                        "dvp_fta_factor": 0.99
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 43.88,
+                        "rank_defense": 15,
+                        "dvp_fga_factor": 1.03,
+                        "dvp_fta_factor": 1.00
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 49.33,
+                        "rank_defense": 16,
+                        "dvp_fga_factor": 1.16,
+                        "dvp_fta_factor": 1.12
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 50.41,
+                        "rank_defense": 17,
+                        "dvp_fga_factor": 1.19,
+                        "dvp_fta_factor": 1.14
+                    }
+                }
+            },
+            {
+                "team": "IND",
+                "team_name": "Indiana Pacers",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 46.88,
+                        "rank_defense": 24,
+                        "dvp_fga_factor": 1.10,
+                        "dvp_fta_factor": 1.07
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 45.86,
+                        "rank_defense": 20,
+                        "dvp_fga_factor": 1.08,
+                        "dvp_fta_factor": 1.05
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 45.41,
+                        "rank_defense": 20,
+                        "dvp_fga_factor": 1.07,
+                        "dvp_fta_factor": 1.04
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 51.52,
+                        "rank_defense": 25,
+                        "dvp_fga_factor": 1.22,
+                        "dvp_fta_factor": 1.17
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 52.33,
+                        "rank_defense": 25,
+                        "dvp_fga_factor": 1.24,
+                        "dvp_fta_factor": 1.19
+                    }
+                }
+            },
+            {
+                "team": "LAC",
+                "team_name": "Los Angeles Clippers",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 43.10,
+                        "rank_defense": 9,
+                        "dvp_fga_factor": 0.96,
+                        "dvp_fta_factor": 0.98
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 41.74,
+                        "rank_defense": 9,
+                        "dvp_fga_factor": 0.94,
+                        "dvp_fta_factor": 0.96
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 40.82,
+                        "rank_defense": 7,
+                        "dvp_fga_factor": 0.90,
+                        "dvp_fta_factor": 0.92
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 46.80,
+                        "rank_defense": 6,
+                        "dvp_fga_factor": 0.87,
+                        "dvp_fta_factor": 0.89
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 47.92,
+                        "rank_defense": 7,
+                        "dvp_fga_factor": 0.90,
+                        "dvp_fta_factor": 0.92
+                    }
+                }
+            },
+            {
+                "team": "LAL",
+                "team_name": "Los Angeles Lakers",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 46.99,
+                        "rank_defense": 25,
+                        "dvp_fga_factor": 1.11,
+                        "dvp_fta_factor": 1.08
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 46.77,
+                        "rank_defense": 23,
+                        "dvp_fga_factor": 1.10,
+                        "dvp_fta_factor": 1.07
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 46.22,
+                        "rank_defense": 22,
+                        "dvp_fga_factor": 1.09,
+                        "dvp_fta_factor": 1.06
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 51.87,
+                        "rank_defense": 26,
+                        "dvp_fga_factor": 1.23,
+                        "dvp_fta_factor": 1.18
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 52.88,
+                        "rank_defense": 27,
+                        "dvp_fga_factor": 1.25,
+                        "dvp_fta_factor": 1.20
+                    }
+                }
+            },
+            {
+                "team": "MEM",
+                "team_name": "Memphis Grizzlies",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 45.92,
+                        "rank_defense": 21,
+                        "dvp_fga_factor": 1.07,
+                        "dvp_fta_factor": 1.04
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 45.10,
+                        "rank_defense": 18,
+                        "dvp_fga_factor": 1.06,
+                        "dvp_fta_factor": 1.03
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 44.75,
+                        "rank_defense": 18,
+                        "dvp_fga_factor": 1.05,
+                        "dvp_fta_factor": 1.02
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 50.40,
+                        "rank_defense": 21,
+                        "dvp_fga_factor": 1.19,
+                        "dvp_fta_factor": 1.15
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 51.66,
+                        "rank_defense": 23,
+                        "dvp_fga_factor": 1.22,
+                        "dvp_fta_factor": 1.17
+                    }
+                }
+            },
+            {
+                "team": "MIA",
+                "team_name": "Miami Heat",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 42.80,
+                        "rank_defense": 7,
+                        "dvp_fga_factor": 0.95,
+                        "dvp_fta_factor": 0.97
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 40.90,
+                        "rank_defense": 7,
+                        "dvp_fga_factor": 0.90,
+                        "dvp_fta_factor": 0.92
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 40.66,
+                        "rank_defense": 8,
+                        "dvp_fga_factor": 0.89,
+                        "dvp_fta_factor": 0.91
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 47.05,
+                        "rank_defense": 7,
+                        "dvp_fga_factor": 0.88,
+                        "dvp_fta_factor": 0.90
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 48.20,
+                        "rank_defense": 8,
+                        "dvp_fga_factor": 0.90,
+                        "dvp_fta_factor": 0.92
+                    }
+                }
+            },
+            {
+                "team": "MIL",
+                "team_name": "Milwaukee Bucks",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 44.20,
+                        "rank_defense": 13,
+                        "dvp_fga_factor": 1.00,
+                        "dvp_fta_factor": 1.01
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 42.30,
+                        "rank_defense": 10,
+                        "dvp_fga_factor": 0.95,
+                        "dvp_fta_factor": 0.97
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 41.88,
+                        "rank_defense": 10,
+                        "dvp_fga_factor": 0.96,
+                        "dvp_fta_factor": 0.97
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 47.45,
+                        "rank_defense": 8,
+                        "dvp_fga_factor": 0.89,
+                        "dvp_fta_factor": 0.91
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 49.88,
+                        "rank_defense": 14,
+                        "dvp_fga_factor": 0.94,
+                        "dvp_fta_factor": 0.96
+                    }
+                }
+            },
+            {
+                "team": "MIN",
+                "team_name": "Minnesota Timberwolves",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 43.60,
+                        "rank_defense": 10,
+                        "dvp_fga_factor": 0.98,
+                        "dvp_fta_factor": 0.99
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 42.02,
+                        "rank_defense": 9,
+                        "dvp_fga_factor": 0.94,
+                        "dvp_fta_factor": 0.96
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 41.22,
+                        "rank_defense": 9,
+                        "dvp_fga_factor": 0.92,
+                        "dvp_fta_factor": 0.94
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 46.50,
+                        "rank_defense": 5,
+                        "dvp_fga_factor": 0.87,
+                        "dvp_fta_factor": 0.89
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 47.44,
+                        "rank_defense": 5,
+                        "dvp_fga_factor": 0.88,
+                        "dvp_fta_factor": 0.90
+                    }
+                }
+            },
+            {
+                "team": "NOP",
+                "team_name": "New Orleans Pelicans",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 46.44,
+                        "rank_defense": 23,
+                        "dvp_fga_factor": 1.09,
+                        "dvp_fta_factor": 1.06
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 46.01,
+                        "rank_defense": 20,
+                        "dvp_fga_factor": 1.08,
+                        "dvp_fta_factor": 1.05
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 45.66,
+                        "rank_defense": 21,
+                        "dvp_fga_factor": 1.08,
+                        "dvp_fta_factor": 1.05
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 51.20,
+                        "rank_defense": 24,
+                        "dvp_fga_factor": 1.21,
+                        "dvp_fta_factor": 1.16
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 52.02,
+                        "rank_defense": 24,
+                        "dvp_fga_factor": 1.23,
+                        "dvp_fta_factor": 1.18
+                    }
+                }
+            },
+            {
+                "team": "NYK",
+                "team_name": "New York Knicks",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 43.40,
+                        "rank_defense": 10,
+                        "dvp_fga_factor": 0.97,
+                        "dvp_fta_factor": 0.99
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 41.20,
+                        "rank_defense": 7,
+                        "dvp_fga_factor": 0.92,
+                        "dvp_fta_factor": 0.94
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 40.06,
+                        "rank_defense": 4,
+                        "dvp_fga_factor": 0.87,
+                        "dvp_fta_factor": 0.89
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 45.45,
+                        "rank_defense": 2,
+                        "dvp_fga_factor": 0.84,
+                        "dvp_fta_factor": 0.86
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 46.18,
+                        "rank_defense": 3,
+                        "dvp_fga_factor": 0.85,
+                        "dvp_fta_factor": 0.87
+                    }
+                }
+            },
+            {
+                "team": "OKC",
+                "team_name": "Oklahoma City Thunder",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 42.06,
+                        "rank_defense": 5,
+                        "dvp_fga_factor": 0.91,
+                        "dvp_fta_factor": 0.93
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 39.88,
+                        "rank_defense": 4,
+                        "dvp_fga_factor": 0.87,
+                        "dvp_fta_factor": 0.89
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 39.42,
+                        "rank_defense": 3,
+                        "dvp_fga_factor": 0.86,
+                        "dvp_fta_factor": 0.88
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 44.88,
+                        "rank_defense": 1,
+                        "dvp_fga_factor": 0.83,
+                        "dvp_fta_factor": 0.85
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 45.50,
+                        "rank_defense": 1,
+                        "dvp_fga_factor": 0.84,
+                        "dvp_fta_factor": 0.86
+                    }
+                }
+            },
+            {
+                "team": "ORL",
+                "team_name": "Orlando Magic",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 41.50,
+                        "rank_defense": 3,
+                        "dvp_fga_factor": 0.89,
+                        "dvp_fta_factor": 0.91
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 39.20,
+                        "rank_defense": 2,
+                        "dvp_fga_factor": 0.85,
+                        "dvp_fta_factor": 0.87
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 38.80,
+                        "rank_defense": 2,
+                        "dvp_fga_factor": 0.85,
+                        "dvp_fta_factor": 0.87
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 45.10,
+                        "rank_defense": 1,
+                        "dvp_fga_factor": 0.84,
+                        "dvp_fta_factor": 0.86
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 45.80,
+                        "rank_defense": 2,
+                        "dvp_fga_factor": 0.85,
+                        "dvp_fta_factor": 0.87
+                    }
+                }
+            },
+            {
+                "team": "PHI",
+                "team_name": "Philadelphia 76ers",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 44.44,
+                        "rank_defense": 15,
+                        "dvp_fga_factor": 1.01,
+                        "dvp_fta_factor": 0.98
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 43.50,
+                        "rank_defense": 13,
+                        "dvp_fga_factor": 0.99,
+                        "dvp_fta_factor": 0.98
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 42.33,
+                        "rank_defense": 13,
+                        "dvp_fga_factor": 0.97,
+                        "dvp_fta_factor": 0.98
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 48.20,
+                        "rank_defense": 9,
+                        "dvp_fga_factor": 0.91,
+                        "dvp_fta_factor": 0.93
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 50.15,
+                        "rank_defense": 15,
+                        "dvp_fga_factor": 0.94,
+                        "dvp_fta_factor": 0.96
+                    }
+                }
+            },
+            {
+                "team": "PHX",
+                "team_name": "Phoenix Suns",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 45.77,
+                        "rank_defense": 20,
+                        "dvp_fga_factor": 1.06,
+                        "dvp_fta_factor": 1.03
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 44.70,
+                        "rank_defense": 17,
+                        "dvp_fga_factor": 1.04,
+                        "dvp_fta_factor": 1.01
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 44.30,
+                        "rank_defense": 16,
+                        "dvp_fga_factor": 1.04,
+                        "dvp_fta_factor": 1.01
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 49.60,
+                        "rank_defense": 18,
+                        "dvp_fga_factor": 1.17,
+                        "dvp_fta_factor": 1.13
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 50.80,
+                        "rank_defense": 19,
+                        "dvp_fga_factor": 1.20,
+                        "dvp_fta_factor": 1.15
+                    }
+                }
+            },
+            {
+                "team": "POR",
+                "team_name": "Portland Trail Blazers",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 48.40,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.15,
+                        "dvp_fta_factor": 1.12
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 47.70,
+                        "rank_defense": 26,
+                        "dvp_fga_factor": 1.12,
+                        "dvp_fta_factor": 1.09
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 46.90,
+                        "rank_defense": 24,
+                        "dvp_fga_factor": 1.11,
+                        "dvp_fta_factor": 1.08
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 52.40,
+                        "rank_defense": 28,
+                        "dvp_fga_factor": 1.24,
+                        "dvp_fta_factor": 1.19
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 53.60,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.27,
+                        "dvp_fta_factor": 1.22
+                    }
+                }
+            },
+            {
+                "team": "SAC",
+                "team_name": "Sacramento Kings",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 46.70,
+                        "rank_defense": 24,
+                        "dvp_fga_factor": 1.10,
+                        "dvp_fta_factor": 1.07
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 46.20,
+                        "rank_defense": 21,
+                        "dvp_fga_factor": 1.09,
+                        "dvp_fta_factor": 1.06
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 45.88,
+                        "rank_defense": 22,
+                        "dvp_fga_factor": 1.08,
+                        "dvp_fta_factor": 1.05
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 50.88,
+                        "rank_defense": 23,
+                        "dvp_fga_factor": 1.20,
+                        "dvp_fta_factor": 1.15
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 51.90,
+                        "rank_defense": 23,
+                        "dvp_fga_factor": 1.23,
+                        "dvp_fta_factor": 1.18
+                    }
+                }
+            },
+            {
+                "team": "SAS",
+                "team_name": "San Antonio Spurs",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 44.02,
+                        "rank_defense": 14,
+                        "dvp_fga_factor": 0.99,
+                        "dvp_fta_factor": 1.00
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 42.60,
+                        "rank_defense": 10,
+                        "dvp_fga_factor": 0.96,
+                        "dvp_fta_factor": 0.98
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 42.00,
+                        "rank_defense": 11,
+                        "dvp_fga_factor": 0.96,
+                        "dvp_fta_factor": 0.97
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 48.05,
+                        "rank_defense": 9,
+                        "dvp_fga_factor": 0.90,
+                        "dvp_fta_factor": 0.92
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 50.22,
+                        "rank_defense": 16,
+                        "dvp_fga_factor": 0.94,
+                        "dvp_fta_factor": 0.96
+                    }
+                }
+            },
+            {
+                "team": "TOR",
+                "team_name": "Toronto Raptors",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 46.30,
+                        "rank_defense": 22,
+                        "dvp_fga_factor": 1.08,
+                        "dvp_fta_factor": 1.05
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 47.20,
+                        "rank_defense": 25,
+                        "dvp_fga_factor": 1.11,
+                        "dvp_fta_factor": 1.08
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 46.50,
+                        "rank_defense": 23,
+                        "dvp_fga_factor": 1.10,
+                        "dvp_fta_factor": 1.07
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 52.00,
+                        "rank_defense": 27,
+                        "dvp_fga_factor": 1.23,
+                        "dvp_fta_factor": 1.18
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 53.00,
+                        "rank_defense": 27,
+                        "dvp_fga_factor": 1.25,
+                        "dvp_fta_factor": 1.20
+                    }
+                }
+            },
+            {
+                "team": "UTA",
+                "team_name": "Utah Jazz",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 48.22,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.15,
+                        "dvp_fta_factor": 1.12
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 48.00,
+                        "rank_defense": 28,
+                        "dvp_fga_factor": 1.13,
+                        "dvp_fta_factor": 1.10
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 47.44,
+                        "rank_defense": 27,
+                        "dvp_fga_factor": 1.12,
+                        "dvp_fta_factor": 1.09
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 53.00,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.25,
+                        "dvp_fta_factor": 1.20
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 54.10,
+                        "rank_defense": 30,
+                        "dvp_fga_factor": 1.28,
+                        "dvp_fta_factor": 1.23
+                    }
+                }
+            },
+            {
+                "team": "WAS",
+                "team_name": "Washington Wizards",
+                "defense_vs_position": {
+                    "PG": {
+                        "fanduel_points_allowed": 47.88,
+                        "rank_defense": 27,
+                        "dvp_fga_factor": 1.14,
+                        "dvp_fta_factor": 1.11
+                    },
+                    "SG": {
+                        "fanduel_points_allowed": 47.80,
+                        "rank_defense": 27,
+                        "dvp_fga_factor": 1.12,
+                        "dvp_fta_factor": 1.09
+                    },
+                    "SF": {
+                        "fanduel_points_allowed": 47.10,
+                        "rank_defense": 26,
+                        "dvp_fga_factor": 1.11,
+                        "dvp_fta_factor": 1.08
+                    },
+                    "PF": {
+                        "fanduel_points_allowed": 52.90,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.25,
+                        "dvp_fta_factor": 1.20
+                    },
+                    "C": {
+                        "fanduel_points_allowed": 53.80,
+                        "rank_defense": 29,
+                        "dvp_fga_factor": 1.27,
+                        "dvp_fta_factor": 1.22
+                    }
+                }
+            }
+        ]
+    }
 }
-}
-},
-{
-“team”: “BOS”,
-“team_name”: “Boston Celtics”,
-“defense_vs_position”: {
-“PG”: {
-“fanduel_points_allowed”: 42.30,
-“rank_defense”: 8,
-“dvp_fga_factor”: 0.92,
-“dvp_fta_factor”: 0.94
-},
-“SG”: {
-“fanduel_points_allowed”: 40.70,
-“rank_defense”: 6,
-“dvp_fga_factor”: 0.89,
-“dvp_fta_factor”: 0.91
-},
-“SF”: {
-“fanduel_points_allowed”: 40.34,
-“rank_defense”: 5,
-“dvp_fga_factor”: 0.88,
-“dvp_fta_factor”: 0.90
-},
-“PF”: {
-“fanduel_points_allowed”: 45.91,
-“rank_defense”: 3,
-“dvp_fga_factor”: 0.85,
-“dvp_fta_factor”: 0.87
-},
-“C”: {
-“fanduel_points_allowed”: 46.62,
-“rank_defense”: 4,
-“dvp_fga_factor”: 0.86,
-“dvp_fta_factor”: 0.88
-}
-}
-},
-{
-“team”: “BRK”,
-“team_name”: “Brooklyn Nets”,
-“defense_vs_position”: {
-“PG”: {
-“fanduel_points_allowed”: 46.16,
-“rank_defense”: 22,
-“dvp_fga_factor”: 1.08,
-“dvp_fta_factor”: 1.05
-},
-“SG”: {
-“fanduel_points_allowed”: 48.10,
-“rank_defense”: 29,
-“dvp_fga_factor”: 1.13,
-“dvp_fta_factor”: 1.10
-},
-“SF”: {
-“fanduel_points_allowed”: 47.67,
-“rank_defense”: 28,
-“dvp_fga_factor”: 1.12,
-“dvp_fta_factor”: 1.09
-},
-“PF”: {
-“fanduel_points_allowed”: 56.23,
-“rank_defense”: 30,
-“dvp_fga_factor”: 1.33,
-“dvp_fta_factor”: 1.28
-},
-“C”: {
-“fanduel_points_allowed”: 55.88,
-“rank_defense”: 29,
-“dvp_fga_factor”: 1.32,
-“dvp_fta_factor”: 1.27
-}
-}
-},
-{
-“team”: “CHI”,
-“team_name”: “Chicago Bulls”,
-“defense_vs_position”: {
-“PG”: {
-“fanduel_points_allowed”: 48.90,
-“rank_defense”: 30,
-“dvp_fga_factor”: 1.16,
-“dvp_fta_factor”: 1.13
-},
-“SG”: {
-“fanduel_points_allowed”: 46.34,
-“rank_defense”: 21,
-“dvp_fga_factor”: 1.08,
-“dvp_fta_factor”: 1.05
-},
-“SF”: {
-“fanduel_points_allowed”: 47.81,
-“rank_defense”: 29,
-“dvp_fga_factor”: 1.13,
-“dvp_fta_factor”: 1.10
-},
-“PF”: {
-“fanduel_points_allowed”: 57.44,
-“rank_defense”: 30,
-“dvp_fga_factor”: 1.36,
-“dvp_fta_factor”: 1.31
-},
-“C”: {
-“fanduel_points_allowed”: 53.39,
-“rank_defense”: 28,
-“dvp_fga_factor”: 1.26,
-“dvp_fta_factor”: 1.21
-}
-}
-},
-{
-“team”: “CHO”,
-“team_name”: “Charlotte Hornets”,
-“defense_vs_position”: {
-“PG”: {
-“fanduel_points_allowed”: 47.48,
-“rank_defense”: 26,
-“dvp_fga_factor”: 1.12,
-“dvp_fta_factor”: 1.09
-},
-“SG”: {
-“fanduel_points_allowed”: 49.96,
-“rank_defense”: 30,
-“dvp_fga_factor”: 1.18,
-“dvp_fta_factor”: 1.15
-},
-“SF”: {
-“fanduel_points_allowed”: 48.99,
-“rank_defense”: 30,
-“dvp_fga_factor”: 1.16,
-“dvp_fta_factor”: 1.13
-},
-“PF”: {
-“fanduel_points_allowed”: 57.41,
-“rank_defense”: 30,
-“dvp_fga_factor”: 1.36,
-“dvp_fta_factor”: 1.31
-},
-“C”: {
-“fanduel_points_allowed”: 55.74,
-“rank_defense”: 28,
-“dvp_fga_factor”: 1.32,
-“dvp_fta_factor”: 1.27
-}
-}
-},
-{
-“team”: “CLE”,
-“team_name”: “Cleveland Cavaliers”,
-“defense_vs_position”: {
-“PG”: {
-“fanduel_points_allowed”: 44.77,
-“rank_defense”: 16,
-“dvp_fga_factor”: 1.02,
-“dvp_fta_factor”: 1.00
-},
-“SG”: {
-“fanduel_points_allowed”: 43.30,
-“rank_defense”: 12,
-“dvp_fga_factor”: 0.98,
-“dvp_fta_factor”:
