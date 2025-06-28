@@ -1,0 +1,202 @@
+{
+“nba_defense_vs_position_2024_25”: {
+“last_updated”: “2025-06-28”,
+“season”: “2024-25”,
+“source”: “FantasyPros FanDuel DVP”,
+“explanation”: “DVP factors represent multipliers for field goal attempts and free throw attempts allowed to each position relative to league average (1.0 = average, >1.0 = more attempts allowed, <1.0 = fewer attempts allowed)”,
+“teams”: [
+{
+“team”: “ATL”,
+“team_name”: “Atlanta Hawks”,
+“defense_vs_position”: {
+“PG”: {
+“fanduel_points_allowed”: 48.02,
+“rank_defense”: 28,
+“dvp_fga_factor”: 1.15,
+“dvp_fta_factor”: 1.12
+},
+“SG”: {
+“fanduel_points_allowed”: 47.94,
+“rank_defense”: 27,
+“dvp_fga_factor”: 1.14,
+“dvp_fta_factor”: 1.11
+},
+“SF”: {
+“fanduel_points_allowed”: 47.20,
+“rank_defense”: 25,
+“dvp_fga_factor”: 1.12,
+“dvp_fta_factor”: 1.09
+},
+“PF”: {
+“fanduel_points_allowed”: 52.80,
+“rank_defense”: 29,
+“dvp_fga_factor”: 1.25,
+“dvp_fta_factor”: 1.20
+},
+“C”: {
+“fanduel_points_allowed”: 53.96,
+“rank_defense”: 30,
+“dvp_fga_factor”: 1.28,
+“dvp_fta_factor”: 1.22
+}
+}
+},
+{
+“team”: “BOS”,
+“team_name”: “Boston Celtics”,
+“defense_vs_position”: {
+“PG”: {
+“fanduel_points_allowed”: 42.30,
+“rank_defense”: 8,
+“dvp_fga_factor”: 0.92,
+“dvp_fta_factor”: 0.94
+},
+“SG”: {
+“fanduel_points_allowed”: 40.70,
+“rank_defense”: 6,
+“dvp_fga_factor”: 0.89,
+“dvp_fta_factor”: 0.91
+},
+“SF”: {
+“fanduel_points_allowed”: 40.34,
+“rank_defense”: 5,
+“dvp_fga_factor”: 0.88,
+“dvp_fta_factor”: 0.90
+},
+“PF”: {
+“fanduel_points_allowed”: 45.91,
+“rank_defense”: 3,
+“dvp_fga_factor”: 0.85,
+“dvp_fta_factor”: 0.87
+},
+“C”: {
+“fanduel_points_allowed”: 46.62,
+“rank_defense”: 4,
+“dvp_fga_factor”: 0.86,
+“dvp_fta_factor”: 0.88
+}
+}
+},
+{
+“team”: “BRK”,
+“team_name”: “Brooklyn Nets”,
+“defense_vs_position”: {
+“PG”: {
+“fanduel_points_allowed”: 46.16,
+“rank_defense”: 22,
+“dvp_fga_factor”: 1.08,
+“dvp_fta_factor”: 1.05
+},
+“SG”: {
+“fanduel_points_allowed”: 48.10,
+“rank_defense”: 29,
+“dvp_fga_factor”: 1.13,
+“dvp_fta_factor”: 1.10
+},
+“SF”: {
+“fanduel_points_allowed”: 47.67,
+“rank_defense”: 28,
+“dvp_fga_factor”: 1.12,
+“dvp_fta_factor”: 1.09
+},
+“PF”: {
+“fanduel_points_allowed”: 56.23,
+“rank_defense”: 30,
+“dvp_fga_factor”: 1.33,
+“dvp_fta_factor”: 1.28
+},
+“C”: {
+“fanduel_points_allowed”: 55.88,
+“rank_defense”: 29,
+“dvp_fga_factor”: 1.32,
+“dvp_fta_factor”: 1.27
+}
+}
+},
+{
+“team”: “CHI”,
+“team_name”: “Chicago Bulls”,
+“defense_vs_position”: {
+“PG”: {
+“fanduel_points_allowed”: 48.90,
+“rank_defense”: 30,
+“dvp_fga_factor”: 1.16,
+“dvp_fta_factor”: 1.13
+},
+“SG”: {
+“fanduel_points_allowed”: 46.34,
+“rank_defense”: 21,
+“dvp_fga_factor”: 1.08,
+“dvp_fta_factor”: 1.05
+},
+“SF”: {
+“fanduel_points_allowed”: 47.81,
+“rank_defense”: 29,
+“dvp_fga_factor”: 1.13,
+“dvp_fta_factor”: 1.10
+},
+“PF”: {
+“fanduel_points_allowed”: 57.44,
+“rank_defense”: 30,
+“dvp_fga_factor”: 1.36,
+“dvp_fta_factor”: 1.31
+},
+“C”: {
+“fanduel_points_allowed”: 53.39,
+“rank_defense”: 28,
+“dvp_fga_factor”: 1.26,
+“dvp_fta_factor”: 1.21
+}
+}
+},
+{
+“team”: “CHO”,
+“team_name”: “Charlotte Hornets”,
+“defense_vs_position”: {
+“PG”: {
+“fanduel_points_allowed”: 47.48,
+“rank_defense”: 26,
+“dvp_fga_factor”: 1.12,
+“dvp_fta_factor”: 1.09
+},
+“SG”: {
+“fanduel_points_allowed”: 49.96,
+“rank_defense”: 30,
+“dvp_fga_factor”: 1.18,
+“dvp_fta_factor”: 1.15
+},
+“SF”: {
+“fanduel_points_allowed”: 48.99,
+“rank_defense”: 30,
+“dvp_fga_factor”: 1.16,
+“dvp_fta_factor”: 1.13
+},
+“PF”: {
+“fanduel_points_allowed”: 57.41,
+“rank_defense”: 30,
+“dvp_fga_factor”: 1.36,
+“dvp_fta_factor”: 1.31
+},
+“C”: {
+“fanduel_points_allowed”: 55.74,
+“rank_defense”: 28,
+“dvp_fga_factor”: 1.32,
+“dvp_fta_factor”: 1.27
+}
+}
+},
+{
+“team”: “CLE”,
+“team_name”: “Cleveland Cavaliers”,
+“defense_vs_position”: {
+“PG”: {
+“fanduel_points_allowed”: 44.77,
+“rank_defense”: 16,
+“dvp_fga_factor”: 1.02,
+“dvp_fta_factor”: 1.00
+},
+“SG”: {
+“fanduel_points_allowed”: 43.30,
+“rank_defense”: 12,
+“dvp_fga_factor”: 0.98,
+“dvp_fta_factor”:
