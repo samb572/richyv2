@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 // Import the main calculation function and any other utilities from calculations.js
-// Make sure calculations.js exports these correctly.
+// Fix the path to point correctly to the 'utils' directory
 const {
-  calculatePaceAdjustment, // We will use this helper directly here
-  calculateTotalProjectedPoints // This is the main function we want to use
-} = require('./calculations'); // Adjust path if calculations.js is in a different directory
+  calculatePaceAdjustment,
+  calculateTotalProjectedPoints
+} = require('../utils/calculations'); // <--- CRITICAL CHANGE HERE!
 
 /**
  * @fileoverview API route for calculating NBA player projections.
@@ -19,7 +19,8 @@ function loadData() {
     // In a Next.js API route, the `data` directory should ideally be at the root
     // of your project or accessible relative to the API route.
     // `process.cwd()` gets the current working directory (project root).
-    const dataDirPath = path.join(process.cwd(), 'data'); // Assuming data folder is directly in project root
+    // Based on your structure, data is in richyv2/data/
+    const dataDirPath = path.join(process.cwd(), 'data'); 
 
     const playerStatsPath = path.join(dataDirPath, 'nba_player_stats_2024_25.json');
     const teamPacePath = path.join(dataDirPath, 'nba_team_pace_2024_25.json');
@@ -45,10 +46,7 @@ function loadData() {
  */
 function findPlayer(playerStats, playerName) {
   return playerStats.nba_player_stats_2024_25.players.find(player =>
-    player.player.toLowerCase() === playerName.toLowerCase() // Exact match is usually better for finding
-    // If you need partial matching, keep the original includes logic, but exact is less error-prone
-    // player.player.toLowerCase().includes(playerName.toLowerCase()) ||
-    // playerName.toLowerCase().includes(player.player.toLowerCase())
+    player.player.toLowerCase() === playerName.toLowerCase()
   );
 }
 
@@ -72,8 +70,6 @@ function findTeamPace(teamPace, teamAbbr) {
  * @returns {Object} The DVP factors for the given position, or default factors if not found.
  */
 function findDVP(dvpData, teamAbbr, position) {
-  // Ensure dvpData structure matches your JSON
-  // Your JSON screenshot showed a structure like: nba_dvp_2024_25.json -> data -> nba_dvp_2024_25 -> teams[] -> team -> defense_vs_position -> {PG: {}, SG: {}}
   const team = dvpData.nba_dvp_2024_25.teams.find(t =>
     t.team === teamAbbr.toUpperCase()
   );
@@ -82,10 +78,9 @@ function findDVP(dvpData, teamAbbr, position) {
     return team.defense_vs_position[position];
   }
 
-  // Fallback if DVP data for team/position is not found
   console.warn(`DVP data not found for team: ${teamAbbr}, position: ${position}. Using default factors.`);
   return {
-    fanduel_points_allowed: 0, // No default points, but factors are important
+    fanduel_points_allowed: 0,
     rank_defense: null,
     dvp_fga_factor: 1.0,
     dvp_fta_factor: 1.0
@@ -94,8 +89,7 @@ function findDVP(dvpData, teamAbbr, position) {
 
 // Main API handler for Next.js API Routes
 export default async function handler(req, res) {
-  // Set CORS headers (essential for local development or separate frontend)
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust this for production if possible
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Accept');
 
@@ -105,21 +99,19 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== 'GET') {
-    // Only allow GET requests for this API route
     return res.status(405).json({ error: 'Method not allowed', message: `Only GET method is supported for ${req.url}` });
   }
 
   try {
-    // Extract parameters from query string
     const {
       player_name,
       opponent_team,
-      projected_minutes, // These are still strings from the URL query
-      usage_adjustment,   // These are still strings from the URL query
-      player_position     // Optional position
+      projected_minutes,
+      usage_adjustment,
+      player_position
     } = req.query;
 
-    // --- Critical Validation of Query Parameters ---
+    // Critical Validation of Query Parameters
     if (!player_name || typeof player_name !== 'string' || player_name.trim() === '') {
       return res.status(400).json({ error: 'Missing or invalid player_name parameter' });
     }
@@ -133,10 +125,10 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Missing usage_adjustment parameter' });
     }
 
-    // --- Load Data ---
+    // Load Data
     const { playerStats, teamPace, dvpData } = loadData();
 
-    // --- Find and Prepare Data for Calculations ---
+    // Find and Prepare Data for Calculations
     const player = findPlayer(playerStats, player_name);
     if (!player) {
       return res.status(404).json({
@@ -156,13 +148,12 @@ export default async function handler(req, res) {
         throw new Error('League average pace data is invalid or missing.');
     }
 
-    // Determine the position to use for DVP
     const positionToUse = player_position || player.position;
     if (!positionToUse || typeof positionToUse !== 'string' || positionToUse.trim() === '') {
         return res.status(400).json({ error: 'Could not determine player position for DVP calculation.' });
     }
 
-    const dvp = findDVP(dvpData, opponent_team, positionToUse); // This gets the DVP factors (dvp_fga_factor, dvp_fta_factor)
+    const dvp = findDVP(dvpData, opponent_team, positionToUse);
 
     // Construct the 'adjustments' object expected by calculateTotalProjectedPoints
     const adjustments = {
@@ -172,21 +163,19 @@ export default async function handler(req, res) {
     };
 
     // Construct the 'rawGameParams' object expected by calculateTotalProjectedPoints
-    // These are still strings from req.query, which calculateTotalProjectedPoints will parse.
     const rawGameParams = {
         projectedMinutes: projected_minutes,
         usageAdjustment: usage_adjustment
     };
 
-    // --- Perform Calculation using the imported robust function ---
-    // Make sure calculateTotalProjectedPoints is imported from calculations.js
+    // Perform Calculation using the imported robust function
     const projectionResult = calculateTotalProjectedPoints(
-      player,        // playerData
-      rawGameParams, // rawGameParams with string values
-      adjustments    // pre-calculated adjustments
+      player,
+      rawGameParams,
+      adjustments
     );
 
-    // --- Return Results ---
+    // Return Results
     res.status(200).json({
       success: true,
       player: {
@@ -201,11 +190,11 @@ export default async function handler(req, res) {
         pace_rank: opponentTeam.rank
       },
       inputs: {
-        projected_minutes: rawGameParams.projectedMinutes, // Use the raw string back for display
-        usage_adjustment: rawGameParams.usageAdjustment,   // Use the raw string back for display
+        projected_minutes: rawGameParams.projectedMinutes,
+        usage_adjustment: rawGameParams.usageAdjustment,
         position_used: positionToUse
       },
-      projection: projectionResult, // This will contain the rounded results
+      projection: projectionResult,
       metadata: {
         calculation_date: new Date().toISOString(),
         data_source: "2024-25 NBA Season Stats"
@@ -213,13 +202,11 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    // Log the full error for server-side debugging
     console.error('API Error during projection:', error);
-    // Return a more user-friendly error message in the response
     res.status(500).json({
       success: false,
       error: 'Internal server error during projection calculation',
-      message: error.message // Expose the specific error message from calculations.js
+      message: error.message
     });
   }
 }
