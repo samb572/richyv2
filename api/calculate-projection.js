@@ -39,7 +39,7 @@ team.team === teamAbbr.toUpperCase()
 
 // Find DVP data
 function findDVP(dvpData, teamAbbr, position) {
-const team = dvpData.nba_defense_vs_position_2024_25.teams.find(team =>
+const team = dvpData.nba_dvp_2024_25.teams.find(team =>
 team.team === teamAbbr.toUpperCase()
 );
 
